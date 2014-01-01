@@ -1,5 +1,5 @@
 #include <windows.h>
- 
+#include <vector>
 LRESULT CALLBACK WndProc(HWND,UINT,WPARAM,LPARAM);
 HINSTANCE g_hInst;
 HWND hWndMain;
