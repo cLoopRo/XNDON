@@ -8,7 +8,7 @@ LPCTSTR lpszClass=TEXT("GdiPlusStart");
 #include <gdiplus.h>
 using namespace Gdiplus;
 #pragma comment(lib, "gdiplus")
- 
+ //nays850 git push test 2014.01.01/5:28 PM/
 int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance
        ,LPSTR lpszCmdParam,int nCmdShow)
 {
