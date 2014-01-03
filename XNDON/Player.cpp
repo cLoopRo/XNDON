@@ -19,7 +19,7 @@ void Player::update()
 	else
 	{
 		setPhase(1);
-		setState(BACK_STATE[curState]);
+	//	setState(BACK_STATE[curState]);
 	}
 }
 
@@ -57,9 +57,9 @@ Player::Player(void)
 	END_STATE[SHIELD_ATTCK] = 1;
 	END_STATE[KICK] = 2;
 
-	BACK_STATE[STND] = STND;
-	BACK_STATE[MOV] = MOV;
-	BACK_STATE[GUARD] = GUARD;
-	BACK_STATE[SHIELD_ATTCK] = GUARD;
-	BACK_STATE[KICK] = STND;
+//	BACK_STATE[STND] = STND;
+//	BACK_STATE[MOV] = MOV;
+//	BACK_STATE[GUARD] = GUARD;
+//	BACK_STATE[SHIELD_ATTCK] = GUARD;
+//	BACK_STATE[KICK] = STND;
 }
