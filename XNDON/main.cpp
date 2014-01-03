@@ -1,7 +1,7 @@
 #include "main.h"
 #include "Render.h"
 #include "ResManager.h"
-
+//잠시 테스트합니다.
 LRESULT CALLBACK WndProc(HWND,UINT,WPARAM,LPARAM);
 HINSTANCE g_hInst;
 HWND hWndMain;
