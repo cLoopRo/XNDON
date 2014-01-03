@@ -1,22 +1,5 @@
 #include "Player.h"
 
-Player::Player(void)
-{
-	setState(Player.STND);
-	setPhase(1);
-	END_STATE[Player.STND] = 1;
-	END_STATE[Player.MOV] = 3;
-	END_STATE[Player.GUARD] = 1;
-	END_STATE[Player.SHIELD_ATTCK] = 1;
-	END_STATE[Player.KICK] = 2;
-
-	BACK_STATE[Player.STND] = Player.STND;
-	BACK_STATE[Player.MOV] = Player.MOV;
-	BACK_STATE[Player.GUARD] = Player.GUARD;
-	BACK_STATE[Player.SHIELD_ATTCK] = Player.GUARD;
-	BACK_STATE[Player.KICK] = Player.STND;
-}
-
 Player::~Player(void)
 {
 
@@ -53,13 +36,30 @@ int Player::getPhase()
 }
 
 //플레이어 현재 상태 변경, 그 상태의 0번 페이즈로 감
-int Player::setState(int nwState)
+void Player::setState(int nwState)
 {
 	curState = nwState;
 	setPhase(1);
 }
 
-int Player::setPhase(int p)
+void Player::setPhase(int p)
 {
 	curPhase = p;
+}
+
+Player::Player(void)
+{
+	setState(STND);
+	setPhase(1);
+	END_STATE[STND] = 1;
+	END_STATE[MOV] = 3;
+	END_STATE[GUARD] = 1;
+	END_STATE[SHIELD_ATTCK] = 1;
+	END_STATE[KICK] = 2;
+
+	BACK_STATE[STND] = STND;
+	BACK_STATE[MOV] = MOV;
+	BACK_STATE[GUARD] = GUARD;
+	BACK_STATE[SHIELD_ATTCK] = GUARD;
+	BACK_STATE[KICK] = STND;
 }

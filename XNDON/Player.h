@@ -14,10 +14,10 @@ public :
 	virtual void update();// 플레이어 상태를 업데이트 하는 함수
 	
 	int getState();
-	int setState(int);
+	void setState(int);
 	
 	int getPhase();
-	int setPhase(int);
+	void setPhase(int);
 
 	virtual ~Player(void);
 
