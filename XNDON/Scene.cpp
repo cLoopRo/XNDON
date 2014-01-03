@@ -1,9 +1,8 @@
 #include "Scene.h"
 
-
-Scene::Scene( )
+Scene :: Scene( )
 {
-
+	player = new Player( );
 }
 
 
