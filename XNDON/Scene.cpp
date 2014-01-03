@@ -5,6 +5,7 @@ Scene :: Scene( )
 	player = new Player( );
 	missile.push_back( new Missile() );
 	missile.push_back( new Missile() );
+	gob.push_back( new Gob() );
 
 }
 
