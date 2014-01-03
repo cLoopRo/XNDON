@@ -11,6 +11,7 @@ LPCTSTR lpszClass=TEXT("XNDON");
 
 Scene* Render :: pScene = NULL;
 vector<Sprite> Render :: sceneObject;
+int Render :: dTime = NULL;
 
 std::map<wstring, Image* > ResManager :: image_map;
 bool	keys[256];	// Array Used For The Keyboard Routine
@@ -95,7 +96,6 @@ void update(int dt)
 	SolidBrush B(Color(0,0,0));
 //	G.DrawString(Hangul,-1,&F,PointF(0,00),&B);
 //	G.MeasureString(Hangul,-1,&F,PointF(0,0),&bound);
-	static unsigned int lastTime;
 	swprintf(szWidth,TEXT("dwTime:%u, 프레임 : %.2lf"), dt, 1000.0/(dt) );
 	
 	
@@ -103,11 +103,11 @@ void update(int dt)
 	
 	G.DrawString(szWidth,-1,&F, PointF(0,6),&B);
 
-	ReleaseDC(hWndMain, hdc);
+//	ReleaseDC(hWndMain, hdc);
 
-	Render::draw(hdc);
+//	Render::draw(hdc);
 
-	Render::sceneUpdate( );
+//	Render::sceneUpdate( );
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
@@ -124,13 +124,11 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
      switch (iMessage) {
      case WM_CREATE:
           hWndMain = hWnd;
-		 
+		hdc = GetDC(hWnd);		 
 		  // SetTimer() 으로 타이머 설치, KillTimer() 으로 타이머 해제
 		  // 우선순위가 낮으므로 정확도를 위해서는 타이머 콜백 함수 사용 => 네번째 인자에 콜백함수 포함
 		  hTimer= (HANDLE) SetTimer( hWnd, 1, 30, NULL );
-          
-		  
-		  return 0;
+      	  return 0;
 
 	 case WM_KEYUP:
 		 keys[wParam] = FALSE;
@@ -143,9 +141,14 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 
 		  return 0;
 	case WM_TIMER:
+		hdc = GetDC(hWnd);		 
+
 		dt = clock() - lastTime;
 		lastTime = clock();
-		update(dt);		
+//		update( dt );
+		Render :: sceneUpdate( dt );
+		Render::draw(hdc);
+
 	case WM_PAINT:
 		hdc=BeginPaint(hWnd, &ps);
         Render::draw(hdc);
