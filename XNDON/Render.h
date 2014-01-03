@@ -11,7 +11,6 @@ public:
 	static void draw(HDC hdc);
 	static void sceneUpdate(int dt);
 	static void sceneUpdate();
-
 	static Scene* getScene( ){	return pScene;	}
 
 private:

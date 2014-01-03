@@ -1,6 +1,6 @@
 #include "Player.h"
 
-void Player :: drawPlayer( Graphics& G )
+void Player :: drawSprite( Graphics& G )
 {
 	G.DrawImage( pImage, position.X, position.Y, 0, 0, 180, 240, Gdiplus::UnitPixel); 
 }
