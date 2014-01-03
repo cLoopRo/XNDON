@@ -9,11 +9,11 @@ HWND hWndMain;
 LPCTSTR lpszClass=TEXT("XNDON");
 
 Scene* Render :: pScene = NULL;
-vector<Sprite> Render :: sceneObject;
+vector<Sprite*> Render :: sceneObject;
 int Render :: dTime = NULL;
+bool Render :: keys[256];
 
 std::map<wstring, Image* > ResManager :: image_map;
-bool keys[256];	// Array Used For The Keyboard Routine
 
 void OnPaint(HDC hdc);		
 int lastTime = 0;
@@ -36,9 +36,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance
 	} 
 	/*<------------------------>*/
  
-	Scene scene;
-	Render::set_Scene(&scene);
-
+	
     WndClass.cbClsExtra=0;
     WndClass.cbWndExtra=0;
     WndClass.hbrBackground=(HBRUSH)(COLOR_WINDOW+1);
@@ -56,7 +54,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance
 	
 	ShowWindow(hWnd,nCmdShow);
  
-		
+	Scene scene;
+	Render::set_Scene(&scene);	
 
     while ( GetMessage(&Message,NULL,0,0) )
 	{
@@ -137,10 +136,10 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
       	return 0;
 
 	 case WM_KEYUP:
-		keys[wParam] = FALSE;
+		Render::keys[wParam] = FALSE;
 		return 0;
 	 case WM_KEYDOWN:
-		keys[wParam] =TRUE;
+		Render::keys[wParam] = TRUE;
 		return 0;
 	/* 마우스 출력 쓸꺼면 쓰세요
 	 case WM_LBUTTONDOWN:

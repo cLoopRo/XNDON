@@ -1,19 +1,20 @@
 #pragma once
 #include "Sprite.h"
 #include "main.h"
+#include "Player.h"
 
 class Scene
 {
 public:
-	Scene(void);
+	Scene( );
 	virtual ~Scene(void);
 	
-	Sprite getPlayer(){	return Player;		}
+	Player* getPlayer(){	return &Player;	}
 	
 	void Update(int dt);
-	
+	friend class Render;
 private:
-	Sprite Player;
+	Player Player;
 
 //	list<Sprite> Monster;
 //	list<Sprite> DeadMonster;

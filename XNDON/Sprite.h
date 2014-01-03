@@ -5,6 +5,8 @@
 class Sprite
 {
 public:
+	virtual void drawPlayer( Graphics& G );
+
 	Sprite( );
 	Sprite(wstring _Path); 
 	Sprite(int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
@@ -88,7 +90,7 @@ protected:
 	int hp;
 	int state;
 
-	Image* image;  //이미지포인터
+	Image* pImage;  //이미지포인터
 
 	Vector3 position; // Make Getter Setter
 	Vector3 velocity; // Make Getter Setter

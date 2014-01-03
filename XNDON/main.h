@@ -34,3 +34,5 @@ public:
 	int Y;
 	int Z;
 };
+
+static bool keys[256];	// Array Used For The Keyboard Routine

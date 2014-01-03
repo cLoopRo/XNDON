@@ -1,11 +1,13 @@
 #include "Scene.h"
 
 
-Scene::Scene(void)
+Scene::Scene( )
 {
+
 }
 
 
 Scene::~Scene(void)
 {
+
 }

@@ -1,27 +1,30 @@
 #include "Render.h"
 
+
 void Render :: set_Scene(Scene* _Scene){
 	pScene = _Scene;
 }
 
 void Render :: draw(HDC hdc){
 	using namespace Gdiplus;
+	;
 	if ( pScene == NULL ) 
 		return ;
-
-//	sceneObject.push_back( pScene->getPlayer() ); // 
+	sceneObject.clear();
+	sceneObject.push_back( pScene->getPlayer() );  
 	// sceneObject.insert( sceneObject.cbegin(), 화면상몬스터의 첫번째 이터레이터, 화면상몬스터의 마지막 이터레이터 ); // 
 	// sceneObject.insert( sceneObject.cbegin(), 화면상몬스터의 공격 이터레이터, 화면상몬스터의 공격 이터레이터 ); // 
 	Graphics G(hdc);
 	
+	SolidBrush RESET( Color(255,255,255,255) );
+	G.FillRectangle(&RESET,0,0,1280,760);
+
 	// 더블버퍼링 
 	// sort(sceneObject.비긴 , 엔드.,  z 축으로 정렬 ) 
-///	for(vector<Sprite>::const_iterator itr = sceneObject.cbegin(); itr != sceneObject.cend(); itr++ )
-//	{
-//		G.DrawImage( itr->getImage(), ;
-//	}
-    SolidBrush RESET( Color(255,255,255,255) );
-	G.FillRectangle(&RESET,0,0,1280,760);
+	//for(vector<Sprite>::iterator itr = sceneObject.begin(); itr != sceneObject.cend(); itr++ )
+	{
+		sceneObject[0]->drawPlayer(G);
+	}
 
 	Font F(L"굴림",20,FontStyleRegular,UnitPixel);
 	TCHAR szWidth[128];
@@ -34,6 +37,14 @@ void Render :: draw(HDC hdc){
 void Render :: sceneUpdate(int dt){
 	dTime = dt;	
 
+	if ( Render::keys[37]  ) // left
+		pScene->Player.moveLeft(dt);
+	if ( Render::keys[38]  ) // up
+		pScene->Player.moveUp(dt);
+	if ( Render::keys[39] ) // right
+		pScene->Player.moveRight(dt);
+	if ( Render::keys[40] ) // down
+		pScene->Player.moveDown(dt);
 }
 
 Render::Render(void){	}
