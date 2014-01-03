@@ -1,5 +1,6 @@
 #pragma once
 #include "Sprite.h"
+#include "main.h"
 
 class Scene
 {
@@ -8,9 +9,15 @@ public:
 	virtual ~Scene(void);
 	
 	Sprite getPlayer(){	return Player;		}
-	void update();
+	
+
 private:
 	Sprite Player;
-	
+//	list<Sprite> Monster;
+//	list<Sprite> DeadMonster;
+//  list<Sprite> Attack;
+//  list<Sprite> Attacked;
+//  splice
+//  list<Sprite> OtherPlayer;
 
 };

@@ -6,5 +6,11 @@ class Player :
 public:
 	Player(void);
 	virtual ~Player(void);
+	// state() 
+/*	void update(unsigned int dt){
+		updateAnmimation( dt );
+
+
+	}*/
 };
 
