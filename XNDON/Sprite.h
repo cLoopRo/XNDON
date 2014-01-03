@@ -85,25 +85,10 @@ public:
 
 	virtual ~Sprite(void);
 
-	void moveLeft(int dt) {
-		position.X -= velocity.X*dt;
-		return;
-	}
-	void moveRight(int dt) {
-		position.X += velocity.X*dt;
-		return;
-	}
-	void moveUp(int dt) {
-		position.Y -= velocity.Y*dt;
-		return;
-	}
-	inline void moveDown(int dt) {		position.Y += velocity.Y*dt;	}
-	/* void move(int dt) {
-		position.X += velocity.X*dt;
-		position.Y += velocity.Y*dt;
-		return;
-	} */
-	
+	inline void moveLeft(int dt)	{	position.X -= velocity.X*dt;	}
+	inline void moveRight(int dt)	{	position.X += velocity.X*dt;	}
+	inline void moveUp(int dt)		{	position.Y -= velocity.Y*dt;	}
+	inline void moveDown(int dt)	{	position.Y += velocity.Y*dt;	}
 	inline int getPosX( ){	return position.X;}
 
 	int getPosY() {return position.Y;}
@@ -125,6 +110,7 @@ public:
 		position.Z = _Position.Z;
 		return;
 	}
+
 	void setVel(const Coord& _Velocity) {
 		velocity.X = _Velocity.X;
 		velocity.Y = _Velocity.Y;
