@@ -10,6 +10,7 @@ public:
 	static void	set_Scene(Scene* _pScene);
 	static void draw(HDC hdc);
 	static void sceneUpdate( );
+
 private:
 
 	static Scene* pScene;
@@ -17,5 +18,6 @@ private:
 	
 	Render(void);
 	virtual ~Render(void);
+
 };
 

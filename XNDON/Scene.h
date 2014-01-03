@@ -13,11 +13,11 @@ public:
 
 private:
 	Sprite Player;
+
 //	list<Sprite> Monster;
 //	list<Sprite> DeadMonster;
 //  list<Sprite> Attack;
 //  list<Sprite> Attacked;
-//  splice
 //  list<Sprite> OtherPlayer;
 
 };

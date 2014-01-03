@@ -10,4 +10,6 @@ Sprite::Sprite(void)
 
 Sprite::~Sprite(void)
 {
+
+
 }

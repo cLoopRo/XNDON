@@ -17,7 +17,7 @@ void Render :: draw(HDC hdc){
 	// sort(sceneObject.비긴 , 엔드.,  z 축으로 정렬 ) 
 	for(vector<Sprite>::const_iterator itr = sceneObject.cbegin(); itr != sceneObject.cend(); itr++ )
 	{
-//		G.DrawImage( itr->현재 보여줘야되는 상태 );
+//		G.DrawImage( itr->getImage(), ;
 	}
 	
 	// 

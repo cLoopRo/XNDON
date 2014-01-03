@@ -1,19 +1,12 @@
 #include "ResManager.h"
 
-/// 256 * 256 
-Image* ResManager :: addImage( WCHAR* _Path ){
-	if ( image_Map[_Path] == NULL )
-		return ( image_Map[_Path] = new Image(_Path) );
+Image* ResManager :: addImage(const wstring& _Path ){
+
+	wstring tmpPath = _Path;
+	
+	if ( image_map[_Path] == NULL )
+		return ( image_map[_Path] = new Image( _Path.c_str() ) );
 	else
-		return image_Map[_Path];
-}
-
-ResManager::ResManager(void)
-{
-}
-
-
-ResManager::~ResManager(void)
-{
+		return image_map[_Path];
 
 }

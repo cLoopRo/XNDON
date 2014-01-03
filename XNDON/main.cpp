@@ -1,7 +1,8 @@
 #include "main.h"
 #include "Render.h"
 #include "ResManager.h"
-//잠시 테스트합니다.
+#include <ctime>
+
 LRESULT CALLBACK WndProc(HWND,UINT,WPARAM,LPARAM);
 HINSTANCE g_hInst;
 HWND hWndMain;
@@ -9,11 +10,11 @@ LPCTSTR lpszClass=TEXT("XNDON");
 
 Scene* Render :: pScene = NULL;
 vector<Sprite> Render :: sceneObject;
-std::map<wstring, Image* > ResManager :: image_Map;
+std::map<wstring, Image* > ResManager :: image_map;
 
-
-
- //nays850 git push test 2014.01.01/5:28 PM/
+void OnPaint(HDC hdc);		
+int lastTime = 0;
+int dt = 0;
 int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance
        ,LPSTR lpszCmdParam,int nCmdShow)
 {
@@ -51,6 +52,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance
  
     while ( GetMessage(&Message,NULL,0,0) )
 	{
+//		HDC hdc = GetDC(hWnd);
+//		OnPaint(hdc);		
 		TranslateMessage(&Message);
 		DispatchMessage(&Message);
     }
@@ -67,13 +70,14 @@ void OnPaint(HDC hdc)
      Graphics G(hdc);
      Gdiplus::Pen P( Gdiplus::Color(255,0,0,255),5);
  
-     G.DrawEllipse(&P,10,10,300,200);
+     G.DrawEllipse(&P,rand()%500,rand()%500,300,200);
 }
 
 
-void CALLBACK update(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
+//void CALLBACK update(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
+void update(int dt)
 {
-	HDC hdc = GetDC(hWnd);
+	HDC hdc = GetDC(hWndMain);
 	Graphics G(hdc);
 	using namespace Gdiplus;
 
@@ -89,14 +93,14 @@ void CALLBACK update(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
 //	G.DrawString(Hangul,-1,&F,PointF(0,00),&B);
 //	G.MeasureString(Hangul,-1,&F,PointF(0,0),&bound);
 	static unsigned int lastTime;
-	swprintf(szWidth,TEXT("dwTime:%u, 프레임 : %.2lf"), dwTime, 1000.0/(dwTime-lastTime) );
-	lastTime = dwTime;
+	swprintf(szWidth,TEXT("dwTime:%u, 프레임 : %.2lf"), dt, 1000.0/(dt) );
+	
 	
 	
 	
 	G.DrawString(szWidth,-1,&F, PointF(0,6),&B);
 
-	ReleaseDC(hWnd, hdc);
+	ReleaseDC(hWndMain, hdc);
 
 	Render::draw(hdc);
 
@@ -115,7 +119,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 		 
 		  // SetTimer() 으로 타이머 설치, KillTimer() 으로 타이머 해제
 		  // 우선순위가 낮으므로 정확도를 위해서는 타이머 콜백 함수 사용 => 네번째 인자에 콜백함수 포함
-		  hTimer= (HANDLE) SetTimer( hWnd, 1, 30, update );
+		  hTimer= (HANDLE) SetTimer( hWnd, 1, 30, NULL );
           
 		  
 		  return 0;
@@ -130,17 +134,16 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 
 
 		  return 0;
-	 case WM_TIMER:
-		  InvalidateRect(hWnd, NULL, TRUE);
-		  return 0;
-     case WM_PAINT:
-
-          hdc=BeginPaint(hWnd, &ps);
-          Render::draw(hdc);
-		  EndPaint(hWnd, &ps);
-          
-		  return 0;
-     case WM_DESTROY:
+	case WM_TIMER:
+		dt = clock() - lastTime;
+		lastTime = clock();
+		update(dt);		
+	case WM_PAINT:
+		hdc=BeginPaint(hWnd, &ps);
+        Render::draw(hdc);
+		EndPaint(hWnd, &ps);
+		return 0;
+    case WM_DESTROY:
           PostQuitMessage(0);
           return 0;
      }

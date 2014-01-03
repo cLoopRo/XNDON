@@ -11,6 +11,7 @@ public:
 
 	void updateState(int dt);
 	int getState( );
+	Image* getImage();
 
 	void setHp(int _Hp);
 	void addHP(int _Hp);
