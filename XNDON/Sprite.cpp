@@ -9,6 +9,11 @@ Sprite::Sprite( ) {
 	velocity = Vector3();
 }
 
+Sprite :: Sprite(wstring _Path){
+	image = ResManager :: addImage( _Path );
+}
+
+
 Sprite::Sprite(int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity) {
 	direction = true;
 	is_controll = 1;

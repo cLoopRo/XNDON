@@ -6,6 +6,7 @@ class Sprite
 {
 public:
 	Sprite( );
+	Sprite(wstring _Path); 
 	Sprite(int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
 	Sprite(int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
 	Sprite(int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
@@ -87,7 +88,7 @@ protected:
 	int hp;
 	int state;
 
-	Image* img;  //이미지포인터
+	Image* image;  //이미지포인터
 
 	Vector3 position; // Make Getter Setter
 	Vector3 velocity; // Make Getter Setter
