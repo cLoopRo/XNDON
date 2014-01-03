@@ -5,6 +5,7 @@ void Player :: drawPlayer( Graphics& G )
 	G.DrawImage( pImage, position.X, position.Y, 0, 0, 180, 240, Gdiplus::UnitPixel); 
 }
 
+
 Player::Player( )
 	: Sprite( L"./ShieldMan.png" )
 {
@@ -23,11 +24,7 @@ Player::Player( )
 	BACK_STATE[Player::SHIELD_ATTCK] = Player.GUARD;
 	BACK_STATE[Player::KICK] = Player.STND;
 	*/
-	}
-
-Player::Player(wstring _Path)
-	: Sprite(_Path)
-{	}
+}
 
 Player::~Player(void)
 {
@@ -47,7 +44,7 @@ void Player::update()
 	}
 	else
 	{
-	//	setPhase(1);
+		setPhase(1);
 	//	setState(BACK_STATE[curState]);
 	}
 }
@@ -65,14 +62,13 @@ int Player::getPhase()
 }
 
 //플레이어 현재 상태 변경, 그 상태의 0번 페이즈로 감
-//int Player::setState(int nwState)
-//{
-//	curState = nwState;
-//	setPhase(1);
-//}
-/*
-int Player::setPhase(int p)
+void Player::setState(int nwState)
+{
+	curState = nwState;
+	setPhase(1);
+}
+
+void Player::setPhase(int p)
 {
 	curPhase = p;
 }
-*/
