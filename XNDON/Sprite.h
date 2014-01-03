@@ -91,7 +91,6 @@ protected:
 	int state;
 
 	Image* pImage;  //이미지포인터
-
 	Vector3 position; // Make Getter Setter
 	Vector3 velocity; // Make Getter Setter
 
