@@ -15,4 +15,5 @@ ResManager::ResManager(void)
 
 ResManager::~ResManager(void)
 {
+
 }

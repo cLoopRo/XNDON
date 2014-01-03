@@ -1,6 +1,4 @@
-
 #include "main.h"
-
 #include "Render.h"
 #include "ResManager.h"
 
