@@ -1,5 +1,5 @@
 #include "Missile.h"
-
+#include<cmath>
 
 void Missile :: drawSprite(Graphics& G){
 	G.DrawImage( pImage, position.X, position.Y, 0, 0, pImage->GetWidth(), pImage->GetHeight(), Gdiplus::UnitPixel);
@@ -7,14 +7,26 @@ void Missile :: drawSprite(Graphics& G){
 
 void Missile :: update(int dt)
 {
-	moveLeft(dt/10);
+	
+	position.X -= velocity.X * dt/7;
+	
+	position.Y += 10 * velocity.Y;
+	if(position.Y > 760 - pImage->GetHeight()) {
+		velocity.Y = -velocity.Y;
+	}
+	else if(position.Y < -20) {
+		velocity.Y = -velocity.Y;
+	}
+	if(position.X < -30) {
+		position.X = 1280; 
+	}
 
 }
 Missile::Missile(void)
 	: Sprite(L"./Fire.png")
 {
-	position = Vector3(1280, 0, 240);
-	velocity = Vector3(1, 0, 0);
+	position = Vector3(1280, 100, 480);
+	velocity = Vector3(1, 1, 0);
 }
 
 
