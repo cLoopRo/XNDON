@@ -1,7 +1,7 @@
 #include "main.h"
 #include "Render.h"
 #include "ResManager.h"
-
+//잠시 테스트합니다.
 LRESULT CALLBACK WndProc(HWND,UINT,WPARAM,LPARAM);
 HINSTANCE g_hInst;
 HWND hWndMain;
@@ -118,6 +118,17 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 		  hTimer= (HANDLE) SetTimer( hWnd, 1, 30, update );
           
 		  
+		  return 0;
+
+	 case WM_KEYUP:
+
+
+
+		  return 0;
+	 case WM_KEYDOWN:
+
+
+
 		  return 0;
 	 case WM_TIMER:
 		  InvalidateRect(hWnd, NULL, TRUE);
