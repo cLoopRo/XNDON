@@ -141,9 +141,6 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 
 	 case WM_KEYUP:
 		InputController::keys[wParam] = FALSE;
-		
-		
-		
 		return 0;
 	 case WM_KEYDOWN:
 		InputController::keys[wParam] = TRUE;

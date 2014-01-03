@@ -4,21 +4,17 @@ void Player :: drawSprite( Graphics& G )
 {
 	int width = 180;
 	int height = 240;
-	if(!flip){
+	if(flip) pImage->RotateFlip(Gdiplus::Rotate180FlipY);
 	G.DrawImage( pImage, position.X, position.Y, tilepos[curState][curPhase].leftup.X, tilepos[curState][curPhase].leftup.Y,
-		width, height, Gdiplus::UnitPixel);}
-	if(flip){
-	G.DrawImage( pImage, position.X, position.Y,360-tilepos[curState][curPhase].leftup.X, tilepos[curState][curPhase].leftup.Y,
-		width, height, Gdiplus::UnitPixel);}
-	
+		width, height, Gdiplus::UnitPixel); 
+	if(flip) pImage->RotateFlip(Gdiplus::Rotate180FlipY);
 }
 
 
 Player::Player( )
 	: Sprite( L"./ShieldMan.png" )
 {
-	Sprite::direction = true;
-	flip=false;
+
 	setState(STND);
 	setPhase(1);
 
@@ -80,42 +76,32 @@ void Player::update(int dt)
 {
 	if ( InputController::keys[37]  ) // left
 	{
-		if(Sprite::direction == true){ pImage->RotateFlip(Gdiplus::Rotate180FlipY); flip=true;}
-		moveLeft(dt/5);
+		moveLeft(dt);
+		flip = true;
 		setState(MOV);
-		Sprite::direction = false;
 	}
 	else if ( InputController::keys[38]  ) // up
 	{
-		moveUp(dt/5);
+		moveUp(dt);
 		setState(MOV);
 	}
 	else if ( InputController::keys[39] ) // right
 	{
-		if(Sprite::direction == false){ pImage->RotateFlip(Gdiplus::Rotate180FlipY); flip=false;}
-		moveRight(dt/5);
+		moveRight(dt);
+		flip = false;
 		setState(MOV);
-		Sprite::direction = true;
 	}
 	else if ( InputController::keys[40] ) // down
 	{
-		moveDown(dt/5);
+		moveDown(dt);
 		setState(MOV);
 	}
-	else {
-		dTimeMove = 0;
+	else
+	{
 		setState(STND);
 	}
+
 	//뭔가 처리를 잘 하고나서, 다음 페이즈로 변경
-	
-	if ( getState() == MOV ){
-		dTimeMove += dt;
-		if ( dTimeMove >= 250 ){
-			dTimeMove -= 250;
-			curPhase = (curPhase)%4+1;
-		}
-	}
-	/*
 	if(curPhase < NUM_PHASE[curState])
 	{
 		setPhase(curPhase+1);
@@ -125,7 +111,6 @@ void Player::update(int dt)
 		setPhase(1);
 	//	setState(BACK_STATE[curState]);
 	}
-	*/
 }
 
 //플레이어 현재 상태 반환

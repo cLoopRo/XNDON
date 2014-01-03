@@ -37,6 +37,4 @@ private :
 	bool flip;
 	int curState;
 	int curPhase;
-
-	int dTimeMove;
 };
