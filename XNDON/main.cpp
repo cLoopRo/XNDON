@@ -1,6 +1,8 @@
 #include "main.h"
 #include "Render.h"
 #include "ResManager.h"
+
+
 //잠시 테스트합니다.
 LRESULT CALLBACK WndProc(HWND,UINT,WPARAM,LPARAM);
 HINSTANCE g_hInst;
@@ -11,7 +13,7 @@ Scene* Render :: pScene = NULL;
 vector<Sprite> Render :: sceneObject;
 std::map<wstring, Image* > ResManager :: image_Map;
 
-
+bool	keys[256];	// Array Used For The Keyboard Routine
 
  //nays850 git push test 2014.01.01/5:28 PM/
 int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance
@@ -108,7 +110,12 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
      HDC hdc;
      PAINTSTRUCT ps;
 	
+	 map<WPARAM , BOOL> keydownmap;
+
+
 	 static HANDLE hTimer;
+
+
      switch (iMessage) {
      case WM_CREATE:
           hWndMain = hWnd;
@@ -121,13 +128,13 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 		  return 0;
 
 	 case WM_KEYUP:
-
-
+		 keys[wParam] = FALSE;
+		 return 0;
 
 		  return 0;
 	 case WM_KEYDOWN:
 
-
+		  keys[wParam] =TRUE;
 
 		  return 0;
 	 case WM_TIMER:

@@ -11,10 +11,14 @@ using Gdiplus::Point;
 #include <vector>
 #include <list>
 #include <map>
+#include <queue>
+
+
 
 using std::vector;
 using std::list;
 using std::map;
+using std::queue;
 
 #include <string>
 using std::wstring;
