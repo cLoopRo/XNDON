@@ -12,6 +12,8 @@ Scene* Render :: pScene = NULL;
 vector<Sprite*> Render :: sceneObject;
 int Render :: dTime = NULL;
 bool Render :: keys[256];
+CachedBitmap* Render :: pCBit = NULL;
+
 
 std::map<wstring, Image* > ResManager :: image_map;
 

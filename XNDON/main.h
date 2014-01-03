@@ -7,6 +7,7 @@
 using Gdiplus::Graphics;
 using Gdiplus::Image;
 using Gdiplus::Point;
+using Gdiplus::CachedBitmap;
 
 #include <vector>
 #include <list>

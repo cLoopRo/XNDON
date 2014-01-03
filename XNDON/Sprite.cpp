@@ -1,6 +1,7 @@
 #include "Sprite.h"
 
 void Sprite :: drawPlayer( Graphics& G ){
+
 }
 Sprite::Sprite( ) {
 	is_controll = 1;
