@@ -5,6 +5,7 @@ void Render :: set_Scene(Scene* _Scene){
 }
 
 void Render :: draw(HDC hdc){
+	using namespace Gdiplus;
 	if ( pScene == NULL ) 
 		return ;
 
@@ -20,10 +21,18 @@ void Render :: draw(HDC hdc){
 //		G.DrawImage( itr->getImage(), ;
 	}
 	
-	// 
+	Font F(L"±º∏≤",20,FontStyleRegular,UnitPixel);
+	TCHAR szWidth[128];
+	SolidBrush B(Color(0,0,0));
+	swprintf(szWidth,TEXT("dwTime:%u, «¡∑π¿” : %.2lf"), dTime, 1000.0/(dTime) );
+	G.DrawString(szWidth,-1,&F, PointF(0,6),&B); 
+
 }
 
-void Render :: sceneUpdate( ){
+void Render :: sceneUpdate(int dt){
+	
+
+
 	
 }
 

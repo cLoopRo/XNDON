@@ -11,6 +11,7 @@ LPCTSTR lpszClass=TEXT("XNDON");
 
 Scene* Render :: pScene = NULL;
 vector<Sprite> Render :: sceneObject;
+int Render :: dTime = NULL;
 
 std::map<wstring, Image* > ResManager :: image_map;
 bool	keys[256];	// Array Used For The Keyboard Routine
@@ -95,7 +96,6 @@ void update(int dt)
 	SolidBrush B(Color(0,0,0));
 //	G.DrawString(Hangul,-1,&F,PointF(0,00),&B);
 //	G.MeasureString(Hangul,-1,&F,PointF(0,0),&bound);
-	static unsigned int lastTime;
 	swprintf(szWidth,TEXT("dwTime:%u, «¡∑π¿” : %.2lf"), dt, 1000.0/(dt) );
 	
 	
@@ -103,11 +103,11 @@ void update(int dt)
 	
 	G.DrawString(szWidth,-1,&F, PointF(0,6),&B);
 
-	ReleaseDC(hWndMain, hdc);
+//	ReleaseDC(hWndMain, hdc);
 
-	Render::draw(hdc);
+//	Render::draw(hdc);
 
-	Render::sceneUpdate( );
+//	Render::sceneUpdate( );
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
@@ -145,7 +145,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 	case WM_TIMER:
 		dt = clock() - lastTime;
 		lastTime = clock();
-		update(dt);		
+		Render :: sceneUpdate( dt );		
 	case WM_PAINT:
 		hdc=BeginPaint(hWnd, &ps);
         Render::draw(hdc);
