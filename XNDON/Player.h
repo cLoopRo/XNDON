@@ -12,5 +12,6 @@ public :
 	virtual ~Player(void);
 private :
 
+
 };
 

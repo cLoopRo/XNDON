@@ -37,16 +37,19 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance
 	} 
 	/*<------------------------>*/
  
-     WndClass.cbClsExtra=0;
-     WndClass.cbWndExtra=0;
-     WndClass.hbrBackground=(HBRUSH)(COLOR_WINDOW+1);
-     WndClass.hCursor=LoadCursor(NULL,IDC_ARROW);
-     WndClass.hIcon=LoadIcon(NULL,IDI_APPLICATION);
-     WndClass.hInstance=hInstance;
-     WndClass.lpfnWndProc=WndProc;
-     WndClass.lpszClassName=lpszClass;
-     WndClass.lpszMenuName=NULL;
-     WndClass.style=CS_HREDRAW | CS_VREDRAW;
+	Scene scene;
+	Render::set_Scene(&scene);
+
+    WndClass.cbClsExtra=0;
+    WndClass.cbWndExtra=0;
+    WndClass.hbrBackground=(HBRUSH)(COLOR_WINDOW+1);
+	WndClass.hCursor=LoadCursor(NULL,IDC_ARROW);
+    WndClass.hIcon=LoadIcon(NULL,IDI_APPLICATION);
+	WndClass.hInstance=hInstance;
+	WndClass.lpfnWndProc=WndProc;
+	WndClass.lpszClassName=lpszClass;
+	WndClass.lpszMenuName=NULL;
+	WndClass.style=CS_HREDRAW | CS_VREDRAW;
 	RegisterClass(&WndClass);
  
 	hWnd=CreateWindow(lpszClass,lpszClass,WS_OVERLAPPEDWINDOW, 
@@ -54,6 +57,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance
 	
 	ShowWindow(hWnd,nCmdShow);
  
+		
+
     while ( GetMessage(&Message,NULL,0,0) )
 	{
 //		HDC hdc = GetDC(hWnd);
@@ -115,12 +120,14 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
      HDC hdc;
      PAINTSTRUCT ps;
 	
-	 map<WPARAM , BOOL> keydownmap;
-
-
+	 
+	 /*마우스 출력 쓸꺼면 쓰세요
+	 vector<LPARAM> leftmousemove ;
+	 vector<LPARAM> rightmousemove;
+	 bool leftdown = FALSE;
+	 bool rightdown = FALSE;
+	 */
 	 static HANDLE hTimer;
-
-
      switch (iMessage) {
      case WM_CREATE:
 		hWndMain = hWnd;
@@ -133,13 +140,27 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 	 case WM_KEYUP:
 		keys[wParam] = FALSE;
 		return 0;
-
-		  return 0;
 	 case WM_KEYDOWN:
-
 		keys[wParam] =TRUE;
-
 		return 0;
+	/* 마우스 출력 쓸꺼면 쓰세요
+	 case WM_LBUTTONDOWN:
+		 leftdown = TRUE;
+		 leftmousemove.clear();
+		 leftmousemove.push_back(lParam);
+		 return 0;
+
+	 case WM_LBUTTONUP:
+		 leftdown = FALSE;
+
+		
+		 return 0;
+
+	 case WM_MOUSEMOVE:
+		 if(leftdown==TRUE)
+			leftmousemove.push_back(lParam);
+		 return 0;
+	*/
 	case WM_TIMER:
 		hdc = GetDC(hWnd);		 
 

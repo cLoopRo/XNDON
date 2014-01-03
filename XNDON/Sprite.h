@@ -97,17 +97,15 @@ public:
 		position.Y -= velocity.Y*dt;
 		return;
 	}
-	void moveDown(int dt) {
-		position.Y += velocity.Y*dt;
-		return;
-	}
+	inline void moveDown(int dt) {		position.Y += velocity.Y*dt;	}
 	/* void move(int dt) {
 		position.X += velocity.X*dt;
 		position.Y += velocity.Y*dt;
 		return;
 	} */
+	
+	inline int getPosX( ){	return position.X;}
 
-	int getPosX() {return position.X;}
 	int getPosY() {return position.Y;}
 	int getPosZ() {return position.Z;}
 	int getVelX() {return velocity.X;}
@@ -140,7 +138,6 @@ public:
 		velocity = Coord(a, b, c);
 		return;
 	}
-	
 
 protected:
 	//is_controll is 0 if it is already doing something
