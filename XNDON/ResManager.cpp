@@ -1,7 +1,6 @@
 #include "ResManager.h"
 
 Image* ResManager :: addImage(const wstring& _Path ){
-
 	wstring tmpPath = _Path;
 	
 	if ( image_map[_Path] == NULL )

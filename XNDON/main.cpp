@@ -3,6 +3,7 @@
 #include "ResManager.h"
 #include <ctime>
 
+
 LRESULT CALLBACK WndProc(HWND,UINT,WPARAM,LPARAM);
 HINSTANCE g_hInst;
 HWND hWndMain;
@@ -10,7 +11,9 @@ LPCTSTR lpszClass=TEXT("XNDON");
 
 Scene* Render :: pScene = NULL;
 vector<Sprite> Render :: sceneObject;
+
 std::map<wstring, Image* > ResManager :: image_map;
+bool	keys[256];	// Array Used For The Keyboard Routine
 
 void OnPaint(HDC hdc);		
 int lastTime = 0;
@@ -112,7 +115,12 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
      HDC hdc;
      PAINTSTRUCT ps;
 	
+	 map<WPARAM , BOOL> keydownmap;
+
+
 	 static HANDLE hTimer;
+
+
      switch (iMessage) {
      case WM_CREATE:
           hWndMain = hWnd;
@@ -125,13 +133,13 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 		  return 0;
 
 	 case WM_KEYUP:
-
-
+		 keys[wParam] = FALSE;
+		 return 0;
 
 		  return 0;
 	 case WM_KEYDOWN:
 
-
+		  keys[wParam] =TRUE;
 
 		  return 0;
 	case WM_TIMER:
