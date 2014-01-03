@@ -1,7 +1,7 @@
 #include "Render.h"
 
 
-void Render :: set_Scene(Scene* _Scene){
+void Render :: setScene(Scene* _Scene){
 	pScene = _Scene;
 }
 
@@ -36,15 +36,7 @@ void Render :: draw(HDC hdc){
 
 void Render :: sceneUpdate(int dt){
 	dTime = dt;	
-
-	if ( Render::keys[37]  ) // left
-		pScene->Player.moveLeft(dt);
-	if ( Render::keys[38]  ) // up
-		pScene->Player.moveUp(dt);
-	if ( Render::keys[39] ) // right
-		pScene->Player.moveRight(dt);
-	if ( Render::keys[40] ) // down
-		pScene->Player.moveDown(dt);
+	pScene->getPlayer()->update(dt);
 }
 
 Render::Render(void){	}

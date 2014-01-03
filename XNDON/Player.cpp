@@ -31,11 +31,16 @@ Player::~Player(void)
 
 }
 
-void Player::update()
+void Player::update(int dt)
 {
-	/*
-		뭔가 처리가 잘 됨
-	*/
+	if ( InputController::keys[37]  ) // left
+		moveLeft(dt);
+	if ( InputController::keys[38]  ) // up
+		moveUp(dt);
+	if ( InputController::keys[39] ) // right
+		moveRight(dt);
+	if ( InputController::keys[40] ) // down
+		moveDown(dt);
 
 	//뭔가 처리를 잘 하고나서, 다음 페이즈로 변경
 	if(END_STATE[curState]!=curPhase)
