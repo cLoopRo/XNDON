@@ -79,12 +79,12 @@ public:
 	int getMaxHp() {return max_hp;}
 	void setMaxHp(int _MaxHp) {max_hp = _MaxHp; return;}
 
-<<<<<<< HEAD
+
 	void setimg(wstring _Path);  //경로를 받아 해당 이미지가 저장된 주소를 이 클래스의 img포인터에 저장시킨다.
 	void draw(Graphics* memG);   //그림을 그린다. 이때 더블 버퍼링을 이용하므로 버퍼(즉 비트맵)을 받아서 거기에 그림을 그린다.
 
 	virtual ~Sprite(void);
-=======
+
 	void moveLeft(int dt) {
 		position.X -= velocity.X*dt;
 		return;
@@ -140,10 +140,7 @@ public:
 		velocity = Coord(a, b, c);
 		return;
 	}
-
-	virtual ~Sprite(void);  //..??
->>>>>>> e1afbaa5e5813ad080f42042273407c30804b78a
-
+	
 
 protected:
 	//is_controll is 0 if it is already doing something
