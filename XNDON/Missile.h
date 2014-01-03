@@ -8,5 +8,6 @@ public:
 	void update(int dt);
 	void drawSprite(Graphics& G);
 	virtual ~Missile(void);
+private:
 };
 
