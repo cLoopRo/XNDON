@@ -1,8 +1,11 @@
 #include "Sprite.h"
 
-void Sprite :: drawPlayer( Graphics& G ){
+void Sprite :: drawSprite( Graphics& G ){
 
 }
+void Sprite :: update(int dt){
+}
+	
 Sprite::Sprite( ) {
 	is_controll = 1;
 	max_hp = 1;

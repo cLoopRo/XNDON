@@ -22,7 +22,7 @@ public :
 	// 플레이어의 동작 실행을 함수로 나타낸다.
 	virtual void update(int dt);// 플레이어 상태를 업데이트 하는 함수
 	
-	void Player :: drawPlayer( Graphics& G );
+	void Player :: drawSprite( Graphics& G );
 
 	int getState();
 	void setState(int);

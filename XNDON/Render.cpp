@@ -20,6 +20,12 @@ void Render :: draw(HDC hdc){
 void Render :: sceneUpdate(int dt){
 	dTime = dt;
 	pScene->getPlayer()->update(dt);
+	list<Sprite*> missiles = pScene->getMissiles();
+	for(list<Sprite*>::iterator itr = missiles.begin(); itr != missiles.end(); itr++)
+		(*itr)->update(dt);
+
+
+
 	sceneUpdate();
 }
 
@@ -34,8 +40,8 @@ void Render :: sceneUpdate()
 
 	sceneObject.clear();
 	sceneObject.push_back( pScene->getPlayer() );  
-	// sceneObject.insert( sceneObject.cbegin(), 화면상몬스터의 첫번째 이터레이터, 화면상몬스터의 마지막 이터레이터 ); // 
-	// sceneObject.insert( sceneObject.cbegin(), 화면상몬스터의 공격 이터레이터, 화면상몬스터의 공격 이터레이터 ); // 
+	for(list<Sprite*>::iterator itr = pScene->getMissileBegin(); itr != pScene->getMissileEnd(); itr++)
+		sceneObject.push_back( (Missile *) *itr );
 	
 
 
@@ -50,9 +56,9 @@ void Render :: sceneUpdate()
 	memG->FillRectangle(&RESET,0,0,crt.right,crt.bottom);
 
 	// sort(sceneObject.비긴 , 엔드.,  z 축으로 정렬 ) 
-	//for(vector<Sprite>::iterator itr = sceneObject.begin(); itr != sceneObject.cend(); itr++ )
+	for(vector<Sprite*>::iterator itr = sceneObject.begin(); itr != sceneObject.cend(); itr++ )
 	{
-		sceneObject[0]->drawPlayer(*memG);
+		(*itr)->drawSprite(*memG);
 	}
 
 	/*if (pCBit == NULL) {  //표시할 그림이없는 경우 그림 만들기

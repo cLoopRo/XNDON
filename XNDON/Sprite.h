@@ -5,8 +5,8 @@
 class Sprite
 {
 public:
-	virtual void drawPlayer( Graphics& G );
-
+	virtual void drawSprite( Graphics& G );
+	virtual void update(int dt);
 	Sprite( );
 	Sprite(wstring _Path); 
 	Sprite(int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);

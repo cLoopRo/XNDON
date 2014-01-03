@@ -77,6 +77,7 @@
   <ItemGroup>
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Missile.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="ResManager.cpp" />
@@ -86,6 +87,7 @@
   <ItemGroup>
     <ClInclude Include="InputController.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Missile.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="ResManager.h" />

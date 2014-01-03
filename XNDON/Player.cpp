@@ -1,6 +1,6 @@
 #include "Player.h"
 
-void Player :: drawPlayer( Graphics& G )
+void Player :: drawSprite( Graphics& G )
 {
 	int width = 180;
 	int height = 240;
