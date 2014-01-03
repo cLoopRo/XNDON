@@ -3,7 +3,6 @@
 #include "ResManager.h"
 #include <ctime>
 
-
 LRESULT CALLBACK WndProc(HWND,UINT,WPARAM,LPARAM);
 HINSTANCE g_hInst;
 HWND hWndMain;
@@ -14,7 +13,7 @@ vector<Sprite> Render :: sceneObject;
 int Render :: dTime = NULL;
 
 std::map<wstring, Image* > ResManager :: image_map;
-bool	keys[256];	// Array Used For The Keyboard Routine
+bool keys[256];	// Array Used For The Keyboard Routine
 
 void OnPaint(HDC hdc);		
 int lastTime = 0;

@@ -33,6 +33,7 @@ void Render :: draw(HDC hdc){
 
 void Render :: sceneUpdate(int dt){
 	dTime = dt;	
+
 }
 
 Render::Render(void){	}

@@ -10,7 +10,8 @@ public:
 	
 	Sprite getPlayer(){	return Player;		}
 	
-
+	void Update(int dt);
+	
 private:
 	Sprite Player;
 

@@ -24,10 +24,11 @@ using std::queue;
 using std::wstring;
 
 
-class Coord{
+class Vector3{
 public:
-	Coord( ){	};
-	Coord(int _X, int _Y, int _Z); 
+	Vector3( ){	};
+	Vector3(int _X, int _Y, int _Z) : X(_X), Y(_Y), Z(_Z)
+	{	}; 
 		
 	int X;
 	int Y;
