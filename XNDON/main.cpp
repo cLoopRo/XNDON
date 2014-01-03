@@ -119,6 +119,17 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
           
 		  
 		  return 0;
+
+	 case WM_KEYUP:
+
+
+
+		  return 0;
+	 case WM_KEYDOWN:
+
+
+
+		  return 0;
 	 case WM_TIMER:
 		  InvalidateRect(hWnd, NULL, TRUE);
 		  return 0;
