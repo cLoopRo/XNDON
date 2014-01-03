@@ -20,7 +20,7 @@ public :
 	int getPhase();
 	void getPhase(int _phase);
 
-	virtual ~Gob();
+//	virtual ~Gob();
 
 
 private :
