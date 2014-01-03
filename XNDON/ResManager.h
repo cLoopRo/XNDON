@@ -12,7 +12,7 @@ public:
 	virtual ~ResManager(void);
 
 private:
-	static std::map<WCHAR*, Image* > image_Map;
+	static std::map<wstring, Image* > image_Map;
 
 };
 

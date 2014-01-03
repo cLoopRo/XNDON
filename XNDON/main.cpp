@@ -9,7 +9,7 @@ LPCTSTR lpszClass=TEXT("XNDON");
 
 Scene* Render :: pScene = NULL;
 vector<Sprite> Render :: sceneObject;
-std::map<WCHAR*, Image* > ResManager :: image_Map;
+std::map<wstring, Image* > ResManager :: image_Map;
 
 
 

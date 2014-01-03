@@ -16,9 +16,13 @@ using std::vector;
 using std::list;
 using std::map;
 
+#include <string>
+using std::wstring;
+
 
 class Coord{
 public:
+	Coord( ){	};
 	Coord(int _X, int _Y, int _Z); 
 		
 	int X;
