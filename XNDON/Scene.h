@@ -12,6 +12,7 @@ public:
 	virtual ~Scene( );
 	Player* getPlayer(){ return (Player*) player;	}
 	list<Sprite*>& getMissiles( ){	return missile;	};
+	list<Sprite*>& getGobs( ){	return gob;	};
 	
 	list<Sprite*>::iterator getMissileBegin( ){ return missile.begin();	}
 	list<Sprite*>::iterator getMissileEnd( ){ return missile.end();	}

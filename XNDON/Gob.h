@@ -1,6 +1,9 @@
 #pragma once
 #include "sprite.h"
-class Gob : public Sprite
+#include<cmath>
+
+class Gob :
+	public Sprite
 {
 public:
 	Gob(void);
