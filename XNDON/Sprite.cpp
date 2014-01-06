@@ -1,12 +1,12 @@
 #include "Sprite.h"
 
-void Sprite :: drawSprite( Graphics& G ){
+void XDSprite :: drawSprite( Graphics& G ){
 
 }
-void Sprite :: update(int dt){
+void XDSprite :: update(int dt){
 }
 	
-Sprite::Sprite( ) {
+XDSprite::XDSprite( ) {
 	is_controll = 1;
 	max_hp = 1;
 	hp = 1;
@@ -15,7 +15,7 @@ Sprite::Sprite( ) {
 	velocity = Vector3(10,10,10);
 }
 
-Sprite :: Sprite(wstring _Path){
+XDSprite :: XDSprite(wstring _Path){
 	pImage = new Image(_Path.c_str() ); //ResManager :: addImage( _Path );
 	position.X = 100;
 	position.Y = 0;
@@ -26,7 +26,7 @@ Sprite :: Sprite(wstring _Path){
 }
 
 
-Sprite::Sprite(int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity) {
+XDSprite :: XDSprite(int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity) {
 	direction = true;
 	is_controll = 1;
 	max_hp = _MaxHP;
@@ -40,7 +40,7 @@ Sprite::Sprite(int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Ve
 	velocity.Z = _Velocity.Z;
 }
 
-Sprite::Sprite(int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity) {
+XDSprite :: XDSprite(int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity) {
 	direction = true;
 	is_controll = _Controll;
 	max_hp = _MaxHP;
@@ -54,7 +54,7 @@ Sprite::Sprite(int _Controll, int _MaxHP, int _HP, const Vector3& _Position, con
 	velocity.Z = _Velocity.Z;
 }
 
-Sprite::Sprite(int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ) {
+XDSprite :: XDSprite(int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ) {
 	direction = true;
 	is_controll = 1;
 	max_hp = _MaxHP;
@@ -64,7 +64,7 @@ Sprite::Sprite(int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, 
 	velocity = Vector3(_VelZ, _VelY, _VelZ);
 }
 
-Sprite::Sprite(int _Controll, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ) {
+XDSprite :: XDSprite(int _Controll, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ) {
 	direction = true;
 	is_controll = _Controll;
 	max_hp = _MaxHP;
@@ -76,7 +76,7 @@ Sprite::Sprite(int _Controll, int _MaxHP, int _HP, int _PosX, int _PosY, int _Po
 
 
 
-Sprite::Sprite(bool _Direction, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity) {
+XDSprite :: XDSprite(bool _Direction, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity) {
 	direction = _Direction;
 	is_controll = 1;
 	max_hp = _MaxHP;
@@ -90,7 +90,7 @@ Sprite::Sprite(bool _Direction, int _MaxHP, int _HP, const Vector3& _Position, c
 	velocity.Z = _Velocity.Z;
 }
 
-Sprite::Sprite(bool _Direction, int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity) {
+XDSprite :: XDSprite(bool _Direction, int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity) {
 	direction = _Direction;
 	is_controll = _Controll;
 	max_hp = _MaxHP;
@@ -104,7 +104,7 @@ Sprite::Sprite(bool _Direction, int _Controll, int _MaxHP, int _HP, const Vector
 	velocity.Z = _Velocity.Z;
 }
 
-Sprite::Sprite(bool _Direction, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ) {
+XDSprite :: XDSprite(bool _Direction, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ) {
 	direction = _Direction;
 	is_controll = 1;
 	max_hp = _MaxHP;
@@ -114,7 +114,7 @@ Sprite::Sprite(bool _Direction, int _MaxHP, int _HP, int _PosX, int _PosY, int _
 	velocity = Vector3(_VelZ, _VelY, _VelZ);
 }
 
-Sprite::Sprite(bool _Direction, int _Controll, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ) {
+XDSprite :: XDSprite(bool _Direction, int _Controll, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ) {
 	direction = _Direction;
 	is_controll = _Controll;
 	max_hp = _MaxHP;
@@ -126,7 +126,7 @@ Sprite::Sprite(bool _Direction, int _Controll, int _MaxHP, int _HP, int _PosX, i
 
 
 
-Sprite::~Sprite(void)
+XDSprite::~XDSprite(void)
 {
 	//..?
 }

@@ -1,6 +1,6 @@
-#include "Scene.h"
+#include "XDScene.h"
 
-Scene :: Scene( )
+XDScene :: XDScene( )
 {
 	player = new Player( );
 	missile.push_back( new Missile() );
@@ -9,7 +9,7 @@ Scene :: Scene( )
 }
 
 
-Scene::~Scene(void)
+XDScene::~XDScene(void)
 {
 
 }

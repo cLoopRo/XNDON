@@ -215,3 +215,5 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
      }
      return(DefWindowProc(hWnd,iMessage,wParam,lParam));
 }
+
+// DC(Device Context)란 출력에 필요한 모든 정보를 가지는 데이터 구조체이며 GDI 모듈에 의해 관리된다. 어떤 폰트를 사용할 것인가, 선의 색상과 굵기, 채움 무늬와 색상, 출력 방법 등등이 모두 출력에 필요한 정보들이다. 화면 출력에 DC가 필요한 이유를 이해하기 위해 몇가지 예를 들어 설명해 보자.

@@ -2,22 +2,22 @@
 #include "main.h"
 #include "ResManager.h"
 
-class Sprite
+class XDSprite
 {
 public:
 	virtual void drawSprite( Graphics& G );
 	virtual void update(int dt);
-	Sprite( );
-	Sprite(wstring _Path); 
-	Sprite(int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
-	Sprite(int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
-	Sprite(int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
-	Sprite(int _Controll, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
+	XDSprite( );
+	XDSprite(wstring _Path); 
+	XDSprite(int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
+	XDSprite(int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
+	XDSprite(int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
+	XDSprite(int _Controll, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
 
-	Sprite(bool _Direction, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
-	Sprite(bool _Direction, int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
-	Sprite(bool _Direction, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
-	Sprite(bool _Direction, int _Controll, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
+	XDSprite(bool _Direction, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
+	XDSprite(bool _Direction, int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
+	XDSprite(bool _Direction, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
+	XDSprite(bool _Direction, int _Controll, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
 
 	bool getDirection( ) {return direction;}
 	void setDirection(bool _Direction) {direction = _Direction;}
@@ -39,7 +39,7 @@ public:
 	void setimg(wstring _Path);  //경로를 받아 해당 이미지가 저장된 주소를 이 클래스의 img포인터에 저장시킨다.
 	void draw(Graphics* memG);   //그림을 그린다. 이때 더블 버퍼링을 이용하므로 버퍼(즉 비트맵)을 받아서 거기에 그림을 그린다.
 
-	virtual ~Sprite(void);
+	virtual ~XDSprite(void);
 
 	void moveLeft(int dt) {position.X -= velocity.X*dt;}
 	void moveRight(int dt) {position.X += velocity.X*dt;}

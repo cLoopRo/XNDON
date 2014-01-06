@@ -3,12 +3,12 @@
 #include "Player.h"
 #include "Missile.h"
 
-class Scene
+class XDScene
 {
 public:
 	
-	Scene( );
-	virtual ~Scene( );
+	XDScene( );
+	virtual ~XDScene( );
 	Player* getPlayer(){ return (Player*) player;	}
 	list<Sprite*>& getMissiles( ){	return missile;	};
 	
@@ -18,7 +18,7 @@ public:
 	void Update(int dt);
 
 private:
-	Sprite* player;
+	XDSprite* player;
 	list<Sprite*> missile;
 
 //	list<Sprite> Monster;

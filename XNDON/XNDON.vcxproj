@@ -81,8 +81,9 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="ResManager.cpp" />
-    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="XDScene.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="XDDirector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputController.h" />
@@ -91,8 +92,9 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="ResManager.h" />
-    <ClInclude Include="Scene.h" />
+    <ClInclude Include="XDScene.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="XDDirector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
