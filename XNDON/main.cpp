@@ -80,8 +80,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance
 	MSG Message;
     while ( GetMessage(&Message,NULL,0,0) )
 	{
-//		TranslateMessage(&Message); //	TranslateMessage 함수는 전달된 메시지가 WM_KEYDOWN인지와 눌려진 키가 문자키인지 검사해 보고 조건이 맞을 경우 WM_CHAR 메시지를 만들어 메시지 큐에 덧붙이는 역할을 한다. 물론 문자 입력이 아닐 경우는 아무 일도 하지 않으며 이 메시지는 DispatchMessage 함수에 의해 WndProc으로 보내진다.
-		DispatchMessage(&Message);
+//		TranslateMessage(&Message); // TranslateMessage 함수는 전달된 메시지가 WM_KEYDOWN인지와 눌려진 키가 문자키인지 검사해 보고 조건이 맞을 경우 WM_CHAR 메시지를 만들어 메시지 큐에 덧붙이는 역할을 한다. 물론 문자 입력이 아닐 경우는 아무 일도 하지 않으며 이 메시지는 DispatchMessage 함수에 의해 WndProc으로 보내진다.
+		DispatchMessage(&Message);  // 입력된 문자의 아스키 코드를 wParam으로 전달
     }
 
 	// BOOL GetMessage( LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax); 
@@ -199,6 +199,11 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 		Render :: sceneUpdate( dt );
 		Render::draw(hdc);
 
+	// 강제로 WM_PAINT 메시지를 발생시켜 주어야 할 때에는 InvalidateRect(hWnd,NULL,FALSE); 함수를 호출 
+	// BOOL InvlidateRect(HWND hWnd, CONST RECT *lpRect, BOOL bErase); 
+	// 이 함수는 윈도우의 작업 영역을 무효화시켜 윈도우즈로 하여금 WM_PAINT 메시지를 해당 윈도우로 보내도록 한다. 첫번째 인수 hWnd는 무효화의 대상이 되는 윈도우, 즉 다시 그려져야 할 윈도우의 핸들이다. 이 값은 WndProc이 호출될 때 전달되는 첫번째 인수 hWnd를 그대로 써 주면 된다.
+	// 두번째 인수 lpRect는 무효화의 대상이 되는 사각 영역을 써 주되 이 값이 NULL이면 윈도우의 전 영역이 무효화된다. 전 영역을 무효화하면 윈도우가 완전히 다시 그려지므로 확실하게 그려지기는 하겠지만 그만큼 실행속도는 늦어지게 된다. 속도를 최대한 높이려면 변경된 최소한의 영역만을 계산하여 무효화하는 것이 좋다. 예제에서는 전 영역을 다 무효화하여 모두 다시 그리도록 하였는데 예제 자체가 간단하기 때문에 속도의 저하는 느낄 수 없지만 그리 썩 좋은 방법은 아니다.
+	// 세번째 인수 bErase는 무효화되기 전에 배경을 모두 지운 후 다시 그릴 것인지 아니면 배경을 지우지 않고 그릴 것인지를 지정한다. 이 값이 TRUE이면 배경을 지운 후 다시 그리고 FALSE이면 배경을 지우지 않은채로 다시 그린다. Key 예제의 경우 문자열이 계속 늘어만 나며 지워져야할 문자가 없기 때문에 이 인수를 FALSE로 지정하였지만 지워져야할 부분이 있다면 이 인수는 TRUE가 되어야 한다. 예제를 다음과 같이 변경해 보자.
 	case WM_PAINT:
 		hdc=BeginPaint(hWnd, &ps);
         Render::draw(hdc);
