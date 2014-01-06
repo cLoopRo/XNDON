@@ -1,22 +1,22 @@
 #pragma once
 #include "main.h"
-#include "Scene.h"
+#include "XDScene.h"
 
 
 
 class Render
 {
 public:
-	static void	setScene(Scene* _pScene);
+	static void	setScene(XDScene* _pScene);
 	static void draw(HDC hdc);
 	static void sceneUpdate(int dt);
 	static void sceneUpdate();
-	static Scene* getScene( ){	return pScene;	}
+	static XDScene* getScene( ){	return pScene;	}
 
 private:
 	static CachedBitmap *pCBit;
-	static Scene* pScene;
-	static vector<Sprite*> sceneObject;
+	static XDScene* pScene;
+	static vector<XDSprite*> sceneObject;
 	static int dTime;
 	Render(void);
 	virtual ~Render(void);

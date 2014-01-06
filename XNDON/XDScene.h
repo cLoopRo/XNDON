@@ -10,16 +10,16 @@ public:
 	XDScene( );
 	virtual ~XDScene( );
 	Player* getPlayer(){ return (Player*) player;	}
-	list<Sprite*>& getMissiles( ){	return missile;	};
+	list<XDSprite*>& getMissiles( ){	return missile;	};
 	
-	list<Sprite*>::iterator getMissileBegin( ){ return missile.begin();	}
-	list<Sprite*>::iterator getMissileEnd( ){ return missile.end();	}
+	list<XDSprite*>::iterator getMissileBegin( ){ return missile.begin();	}
+	list<XDSprite*>::iterator getMissileEnd( ){ return missile.end();	}
 
 	void Update(int dt);
 
 private:
 	XDSprite* player;
-	list<Sprite*> missile;
+	list<XDSprite*> missile;
 
 //	list<Sprite> Monster;
 //	list<Sprite> DeadMonster;

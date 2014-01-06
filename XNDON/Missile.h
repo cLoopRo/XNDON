@@ -1,7 +1,7 @@
 #pragma once
-#include "sprite.h"
+#include "XDSprite.h"
 class Missile :
-	public Sprite
+	public XDSprite
 {
 public:
 	Missile(void);

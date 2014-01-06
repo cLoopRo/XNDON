@@ -16,8 +16,8 @@ HWND hWndMain; // HWND : 윈도우 핸들을 담는 전용 타입, 유사) HANDLE : 범용핸들 �
 // hWND 가 전역(static)일 시 제대로 작동 안함
 
 
-Scene* Render :: pScene = NULL;
-vector<Sprite*> Render :: sceneObject;
+XDScene* Render :: pScene = NULL;
+vector<XDSprite*> Render :: sceneObject;
 int Render :: dTime = NULL;
 
 CachedBitmap* Render :: pCBit = NULL;
@@ -73,7 +73,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance
 	/*<------------------------>*/
 	
  
-	Scene scene;
+	XDScene scene;
 	Render::setScene(&scene);	
 
 

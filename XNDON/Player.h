@@ -1,6 +1,6 @@
 #pragma once
 #include "InputController.h"
-#include "sprite.h"
+#include "XDSprite.h"
 #include "main.h"
 
 typedef struct  
@@ -9,7 +9,7 @@ typedef struct
 }TILEPOS;
 
 
-class Player : public Sprite
+class Player : public XDSprite
 {
 public :
 	enum STATE_LIST {STND, MOV, GUARD, KICK, SHIELD_ATTCK}; //상태 목록

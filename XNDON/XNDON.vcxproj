@@ -82,7 +82,7 @@
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="ResManager.cpp" />
     <ClCompile Include="XDScene.cpp" />
-    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="XDSprite.cpp" />
     <ClCompile Include="XDDirector.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +93,7 @@
     <ClInclude Include="Render.h" />
     <ClInclude Include="ResManager.h" />
     <ClInclude Include="XDScene.h" />
-    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="XDSprite.h" />
     <ClInclude Include="XDDirector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

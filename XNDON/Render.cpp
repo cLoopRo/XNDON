@@ -2,7 +2,7 @@
 
 extern HWND hWndMain;
 
-void Render :: setScene(Scene* _Scene){
+void Render :: setScene(XDScene* _Scene){
 	pScene = _Scene;
 }
 
@@ -20,8 +20,8 @@ void Render :: draw(HDC hdc){
 void Render :: sceneUpdate(int dt){
 	dTime = dt;
 	pScene->getPlayer()->update(dt);
-	list<Sprite*> missiles = pScene->getMissiles();
-	for(list<Sprite*>::iterator itr = missiles.begin(); itr != missiles.end(); itr++)
+	list<XDSprite*> missiles = pScene->getMissiles();
+	for(list<XDSprite*>::iterator itr = missiles.begin(); itr != missiles.end(); itr++)
 		(*itr)->update(dt);
 
 
@@ -40,7 +40,7 @@ void Render :: sceneUpdate()
 
 	sceneObject.clear();
 	sceneObject.push_back( pScene->getPlayer() );  
-	for(list<Sprite*>::iterator itr = pScene->getMissileBegin(); itr != pScene->getMissileEnd(); itr++)
+	for(list<XDSprite*>::iterator itr = pScene->getMissileBegin(); itr != pScene->getMissileEnd(); itr++)
 		sceneObject.push_back( (Missile *) *itr );
 	
 
@@ -56,7 +56,7 @@ void Render :: sceneUpdate()
 	memG->FillRectangle(&RESET,0,0,crt.right,crt.bottom);
 
 	// sort(sceneObject.비긴 , 엔드.,  z 축으로 정렬 ) 
-	for(vector<Sprite*>::iterator itr = sceneObject.begin(); itr != sceneObject.cend(); itr++ )
+	for(vector<XDSprite*>::iterator itr = sceneObject.begin(); itr != sceneObject.cend(); itr++ )
 	{
 		(*itr)->drawSprite(*memG);
 	}

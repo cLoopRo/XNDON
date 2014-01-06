@@ -15,9 +15,9 @@ void Player :: drawSprite( Graphics& G )
 
 
 Player::Player( )
-	: Sprite( L"./ShieldMan.png" )
+	: XDSprite( L"./ShieldMan.png" )
 {
-	Sprite::direction = true;
+	XDSprite::direction = true;
 	flip=false;
 	setState(STND);
 	setPhase(1);
@@ -80,10 +80,10 @@ void Player::update(int dt)
 {
 	if ( InputController::keys[37]  ) // left
 	{
-		if(Sprite::direction == true){ pImage->RotateFlip(Gdiplus::Rotate180FlipY); flip=true;}
+		if(XDSprite::direction == true){ pImage->RotateFlip(Gdiplus::Rotate180FlipY); flip=true;}
 		moveLeft(dt/5);
 		setState(MOV);
-		Sprite::direction = false;
+		XDSprite::direction = false;
 	}
 	else if ( InputController::keys[38]  ) // up
 	{
@@ -92,10 +92,10 @@ void Player::update(int dt)
 	}
 	else if ( InputController::keys[39] ) // right
 	{
-		if(Sprite::direction == false){ pImage->RotateFlip(Gdiplus::Rotate180FlipY); flip=false;}
+		if(XDSprite::direction == false){ pImage->RotateFlip(Gdiplus::Rotate180FlipY); flip=false;}
 		moveRight(dt/5);
 		setState(MOV);
-		Sprite::direction = true;
+		XDSprite::direction = true;
 	}
 	else if ( InputController::keys[40] ) // down
 	{

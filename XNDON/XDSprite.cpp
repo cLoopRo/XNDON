@@ -1,4 +1,4 @@
-#include "Sprite.h"
+#include "XDSprite.h"
 
 void XDSprite :: drawSprite( Graphics& G ){
 
