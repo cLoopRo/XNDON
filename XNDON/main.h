@@ -1,5 +1,5 @@
 #pragma once
-
+//T.T
 #include <windows.h>
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus")
