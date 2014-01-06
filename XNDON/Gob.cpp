@@ -7,19 +7,8 @@ void Gob :: drawSprite(Graphics& G){
 
 void Gob :: update(int dt)
 {
-	
-	position.X -= velocity.X * dt/7;
-	
-	position.Y += 10 * velocity.Y;
-	if(position.Y > 760 - pImage->GetHeight()) {
-		velocity.Y = -velocity.Y;
-	}
-	else if(position.Y < -20) {
-		velocity.Y = -velocity.Y;
-	}
-	if(position.X < -30) {
-		position.X = 1280; 
-	}
+	lookat(plpos);
+	move(dt/7);
 	
 }
 Gob::Gob(void)
@@ -29,6 +18,26 @@ Gob::Gob(void)
 	velocity = Vector3(1, 1, 0);
 }
 
+Gob::Gob(const Vector3 &PlayerPos)
+	: Sprite(L"./goblin_default.png")
+{
+	position = Vector3(640, 720, 0);
+	velocity = Vector3(1, 1, 0);
+	plpos = PlayerPos;
+}
+
+void Gob :: lookat(Vector3 v3){
+	
+	velocity =(v3 - position);
+	velocity.X = (velocity.X==0)? 0 : velocity.X/(abs(velocity.X));
+	velocity.Y = (velocity.Y==0)? 0 : velocity.Y/(abs(velocity.Y));
+	velocity.Z = (velocity.Z==0)? 0 : velocity.Z/(abs(velocity.Z));
+	 
+}
+
+void Gob :: setplpos(const Vector3& v3){
+	plpos = v3;
+}
 
 Gob::~Gob(void)
 {

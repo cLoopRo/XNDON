@@ -45,11 +45,11 @@ public:
 	void moveRight(int dt) {position.X += velocity.X*dt;}
 	void moveUp(int dt) {position.Y -= velocity.Y*dt;}
 	void moveDown(int dt) {position.Y += velocity.Y*dt;}
-	/* void move(int dt) {
+	 void move(int dt) {
 		position.X += velocity.X*dt;
 		position.Y += velocity.Y*dt;
-		return;
-	} */
+		
+	} 
 	
 	int getPositionX( ) {return position.X;}
 	int getPositionY( ) {return position.Y;}
@@ -63,7 +63,7 @@ public:
 	void setVelocityX(int _X) {velocity.X = _X;}
 	void setVelocityY(int _Y) {velocity.Y = _Y;}
 	void setVelocityZ(int _Z) {velocity.Z = _Z;}
-	const Vector3& getPosition( ) {return position;}
+	Vector3 getPosition( ) {return position;}
 	const Vector3& getVelocity( ) {return velocity;}
 	void setPosition(const Vector3& _Position) {
 		position.X = _Position.X;
@@ -77,6 +77,7 @@ public:
 	}
 	void setPosition(int _X, int _Y, int _Z) {position = Vector3(_X, _Y, _Z);}
 	void setVelocity(int _X, int _Y, int _Z) {velocity = Vector3(_X, _Y, _Z);}
+	
 
 
 protected:

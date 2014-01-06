@@ -5,7 +5,7 @@ void Sprite :: drawSprite( Graphics& G ){
 }
 void Sprite :: update(int dt){
 }
-	
+
 Sprite::Sprite( ) {
 	is_controll = 1;
 	max_hp = 1;
@@ -17,8 +17,8 @@ Sprite::Sprite( ) {
 
 Sprite :: Sprite(wstring _Path){
 	pImage = new Image(_Path.c_str() ); //ResManager :: addImage( _Path );
-	position.X = 100;
-	position.Y = 0;
+	position.X = 200;
+	position.Y = 200;
 	position.Z = 100;
 	velocity.X = 1;
 	velocity.Y = 1;

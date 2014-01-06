@@ -12,13 +12,13 @@ public:
 	virtual ~Scene( );
 	Player* getPlayer(){ return (Player*) player;	}
 	list<Sprite*>& getMissiles( ){	return missile;	};
-	list<Sprite*>& getGobs( ){	return gob;	};
+	list<Gob*>& getGobs( ){	return gob;	};
 	
 	list<Sprite*>::iterator getMissileBegin( ){ return missile.begin();	}
 	list<Sprite*>::iterator getMissileEnd( ){ return missile.end();	}
 
-	list<Sprite*>::iterator getGobBegin( ){ return gob.begin();	}
-	list<Sprite*>::iterator getGobEnd( ){ return gob.end();	}
+	list<Gob*>::iterator getGobBegin( ){ return gob.begin();	}
+	list<Gob*>::iterator getGobEnd( ){ return gob.end();	}
 
 	void Update(int dt);
 
@@ -26,7 +26,7 @@ private:
 	Sprite* player;
 	list<Sprite*> missile;
 
-	list<Sprite*> gob;
+	list<Gob*> gob;
 //	list<Sprite> DeadMonster;
 //  list<Sprite> Attack;
 //  list<Sprite> Attacked;

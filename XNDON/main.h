@@ -34,6 +34,15 @@ public:
 	int X;
 	int Y;
 	int Z;
+
+	const Vector3 operator - (const Vector3 &T) const{
+		Vector3 RT;
+		RT.X = X - T.X;
+		RT.Y = Y - T.Y;
+		RT.Z = Z - T.Z;
+		return RT;
+
+	}
 };
 
 static bool keys[256];	// Array Used For The Keyboard Routine

@@ -21,13 +21,15 @@ void Render :: sceneUpdate(int dt){
 	dTime = dt;
 	pScene->getPlayer()->update(dt);
 	list<Sprite*> missiles = pScene->getMissiles();
-	list<Sprite*> gobs = pScene->getGobs();
+	list<Gob*> gobs = pScene->getGobs();
 	for(list<Sprite*>::iterator itr = missiles.begin(); itr != missiles.end(); itr++)
 		(*itr)->update(dt);
 
-	for(list<Sprite*>::iterator itr2 = gobs.begin(); itr2 != gobs.end(); itr2++)
-		(*itr2)->update(dt);
-
+	for(list<Gob*>::iterator itr = gobs.begin(); itr != gobs.end(); itr++){
+		(*itr)->update(dt);
+		(*itr)->setplpos(pScene->getPlayer()->getPosition());
+	}
+	
 	sceneUpdate();
 }
 
@@ -44,7 +46,7 @@ void Render :: sceneUpdate()
 	sceneObject.push_back( pScene->getPlayer() );  
 	for(list<Sprite*>::iterator itr = pScene->getMissileBegin(); itr != pScene->getMissileEnd(); itr++)
 		sceneObject.push_back( (Missile *) *itr );
-	for(list<Sprite*>::iterator itr2 = pScene->getGobBegin(); itr2 != pScene->getGobEnd(); itr2++)
+	for(list<Gob*>::iterator itr2 = pScene->getGobBegin(); itr2 != pScene->getGobEnd(); itr2++)
 		sceneObject.push_back( (Gob *) *itr2 );
 
 
