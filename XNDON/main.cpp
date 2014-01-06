@@ -38,22 +38,8 @@ int dt = 0;
 int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance
        ,LPSTR lpszCmdParam,int nCmdShow) 
 {
-	HWND hWnd;
-    MSG Message;
-    
-    g_hInst = hInstance;
+	g_hInst = hInstance;
 	
-	/*<----- GdiPlus 시작 ----->*/
-	ULONG_PTR gpToken;
-    Gdiplus::GdiplusStartupInput gpsi;
-    if ( Gdiplus::GdiplusStartup(&gpToken,&gpsi,NULL) != Gdiplus::Ok) {
-		MessageBox(NULL,TEXT("GDI+ 라이브러리를 초기화할 수 없습니다."),
-		TEXT("알림"),MB_OK);
-		return 0;
-	} 
-	/*<------------------------>*/
- 
-
 	/*<--- 윈도우( 입력과 출력을 할 수 있도록 해준다.) 클래스 --->*/
     WNDCLASS WndClass;
 
@@ -70,23 +56,44 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance
 	RegisterClass(&WndClass); // 윈도우 클래스 등록
 
 	// 윈도우 생성
+	HWND hWnd;
 	hWnd = CreateWindow(lpszClass,lpszClass,WS_OVERLAPPEDWINDOW, 
 		0 , 0, CL_WIN_WIDTH_PIXEL, CL_WIN_HEIGHT_PIXEL, NULL,(HMENU)NULL,hInstance,NULL);
-	/*<--- 윈도우 클래스 등록 및 생성 완료 --->*/
-
-	
 	ShowWindow(hWnd,nCmdShow);
+	/*<--- 윈도우 클래스 등록 및 생성 완료 --->*/
+	
+	/*<----- GdiPlus 시작 ----->*/
+	ULONG_PTR gpToken;
+    Gdiplus::GdiplusStartupInput gpsi;
+    if ( Gdiplus::GdiplusStartup(&gpToken,&gpsi,NULL) != Gdiplus::Ok) {
+		MessageBox(NULL,TEXT("GDI+ 라이브러리를 초기화할 수 없습니다."),
+		TEXT("알림"),MB_OK);
+		return 0;
+	} 
+	/*<------------------------>*/
+	
  
 	Scene scene;
 	Render::setScene(&scene);	
 
+
+	MSG Message;
     while ( GetMessage(&Message,NULL,0,0) )
 	{
-//		HDC hdc = GetDC(hWnd);
-//		OnPaint(hdc);		
-		TranslateMessage(&Message);
+//		TranslateMessage(&Message); //	TranslateMessage 함수는 전달된 메시지가 WM_KEYDOWN인지와 눌려진 키가 문자키인지 검사해 보고 조건이 맞을 경우 WM_CHAR 메시지를 만들어 메시지 큐에 덧붙이는 역할을 한다. 물론 문자 입력이 아닐 경우는 아무 일도 하지 않으며 이 메시지는 DispatchMessage 함수에 의해 WndProc으로 보내진다.
 		DispatchMessage(&Message);
     }
+
+	// BOOL GetMessage( LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax); 
+    // 이 함수는 시스템이 유지하는 메시지 큐에서 메시지를 읽어들인다. 읽어들인 메시지는 첫번째 인수가 지정하는 MSG 구조체에 저장된다. 이 함수는 읽어들인 메시지가 프로그램을 종료하라는 WM_QUIT일 경우 False를 리턴하며 그 외의 메시지이면 True를 리턴한다. 따라서 WM_QUIT 메시지가 읽혀질 때까지, 즉 프로그램이 종료될 때까지 전체 while 루프가 계속 실행된다. 나머지 세 개의 인수는 읽어들일 메시지의 범위를 지정하는데 잘 사용되지 않으므로 일단 무시하기로 한다.
+
+	// BOOL TranslateMessage( CONST MSG *lpMsg); 
+	// 키보드 입력 메시지를 가공하여 프로그램에서 쉽게 쓸 수 있도록 해 준다. 윈도우즈는 키보드의 어떤 키가 눌러졌다거나 떨어졌을 때 키보드 메시지를 발생시키는데 이 함수는 키보드의 눌림(WM_KEYDOWN)과 떨어짐(WM_KEYUP)이 연속적으로 발생할 때 문자가 입력되었다는 메시지(WM_CHAR)를 만드는 역할을 한다. 예를 들어 A키를 누른 후 다시 A키를 떼면 A문자가 입력되었다는 메시지를 만들어 낸다.
+
+	// LONG DispatchMessage( CONST MSG *lpmsg); 
+	// 시스템 메시지 큐에서 꺼낸 메시지를 프로그램의 메시지 처리 함수(WndProc)로 전달한다. 이 함수에 의해 메시지가 프로그램으로 전달되며 프로그램에서는 전달된 메시지를 점검하여 다음 동작을 결정하게 된다.
+	// 메시지 루프에서 하는 일은 메시지를 꺼내고, 필요한 경우 약간 형태를 바꾼 후 응용 프로그램으로 전달하는 것 뿐이다. 이 과정은 WM_QUIT 메시지가 전달될 때까지, 즉 프로그램이 종료될때까지 반복된다. 결국 메시지 루프가 하는 일이란 메시지 큐에서 메시지를 꺼내 메시지 처리 함수로 보내주는 것 뿐이다.
+	// 실제 메시지 처리는 별도의 메시지 처리 함수(WndProc)에서 수행한다. 메시지는 시스템의 변화에 대한 정보이며 MSG라는 구조체에 보관된다. MSG 구조체는 다음과 같이 정의되어 있다.
 
 	/*<----- GDI+ 종료 ----->*/
 	Gdiplus::GdiplusShutdown(gpToken);
@@ -130,9 +137,7 @@ void update(int dt)
 	G.DrawString(szWidth,-1,&F, PointF(0,6),&B);
 
 //	ReleaseDC(hWndMain, hdc);
-
 //	Render::draw(hdc);
-
 //	Render::sceneUpdate( );
 }
 
@@ -140,15 +145,15 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 {
      HDC hdc;
      PAINTSTRUCT ps;
-	
-	 
+
 	 /*마우스 출력 쓸꺼면 쓰세요
 	 vector<LPARAM> leftmousemove ;
 	 vector<LPARAM> rightmousemove;
 	 bool leftdown = FALSE;
 	 bool rightdown = FALSE;
 	 */
-	 static HANDLE hTimer;
+
+	 HANDLE hTimer;
      switch (iMessage) {
      case WM_CREATE:
 		hWndMain = hWnd;
