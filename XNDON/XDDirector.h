@@ -7,10 +7,6 @@ class XDDirector
 public:
 	XDDirector(void);
 	~XDDirector(void);
-
-
-
-
 private:
 	static XDScene* _scene;
 
