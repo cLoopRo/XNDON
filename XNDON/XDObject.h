@@ -3,7 +3,23 @@
 
 class XDObject
 {
-protected :
+
+protected:
+	void add_Image(wstring _Path){
+		map<wstring, Image*>::iterator itr;
+		if ( _images.end() == ( itr = _images.find(_Path) )  ) // 해당 image 가 존재하지 않으면
+		{
+			_pImage = new Image(_Path.c_str());
+			_images.insert ( std::pair<wstring, Image* >(_Path, _pImage) );
+		}
+		else
+		{
+			_pImage = itr->second;
+		}
+	}
+
+
+protected:
 	static XDObject* Create_Object(XDObject* _Object)
 	{
 		_objects.push_back(_Object);
@@ -17,27 +33,16 @@ protected :
 		_objects.clear( );
 	}
 
-	void add_Image(wstring _Path){
-		map<wstring, Image*>::iterator itr;
-		if ( _images.end() == ( itr = _images.find(_Path) )  ) // 해당 image 가 존재하지 않으면
-		{
-			Image* _image = new Image(_Path.c_str());
-			_images.insert ( std::pair<wstring, Image* >(_Path, _image) );
-		
-		}
-		else
-		{
-			_image = itr->second;
-		}
-	}
-
-	Image* _image;
+private:
+	Image* _pImage;
 
 private:
-
-
 	static list<XDObject*> _objects;
 	static map<wstring, Image* >  _images;
+
+protected:
+	XDObject( )
+	{	}
 
 };
 

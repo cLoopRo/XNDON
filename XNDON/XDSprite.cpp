@@ -6,7 +6,7 @@ void XDSprite :: drawSprite( Graphics& G ){
 void XDSprite :: update(int dt){
 }
 	
-XDSprite::XDSprite( ) {
+XDSprite::XDSprite( ){
 	is_controll = 1;
 	max_hp = 1;
 	hp = 1;
