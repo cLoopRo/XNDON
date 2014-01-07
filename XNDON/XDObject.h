@@ -18,6 +18,12 @@ protected:
 		}
 	}
 
+	void set_Image_Size(int _Width, int _Height)
+	{
+		_width = _Width;
+		_height = _Height;
+	}
+	
 
 protected:
 	static XDObject* Create_Object(XDObject* _Object)
@@ -33,8 +39,9 @@ protected:
 		_objects.clear( );
 	}
 
-private:
+protected:
 	Image* _pImage;
+	int _width, _height;
 
 private:
 	static list<XDObject*> _objects;

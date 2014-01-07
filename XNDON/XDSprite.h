@@ -9,11 +9,24 @@ class XDSprite : public XDObject
 
 	
 public :
+/*
+	void draw(Graphics& G )
+	{
+		G.DrawImage( pImage, position.X - _width/2, position.Y - _height/2, 
+			
+			_width, _height, Gdiplus::UnitPixel);	
+	}
 
+	 pImage, position.X, position.Y, tilepos[curState][curPhase].leftup.X, tilepos[curState][curPhase].leftup.Y,
+		width, height, Gdiplus::UnitPixel);
 
+	void setNode(int _NodeNum)
+	{
+		
 
-
-
+	}
+	
+*/
 
 
 	virtual void drawSprite( Graphics& G );

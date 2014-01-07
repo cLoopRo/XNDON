@@ -133,7 +133,6 @@ void update(int dt)
 	
 	
 	
-	
 	G.DrawString(szWidth,-1,&F, PointF(0,6),&B);
 
 //	ReleaseDC(hWndMain, hdc);
