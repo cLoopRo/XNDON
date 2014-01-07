@@ -3,6 +3,9 @@
 #include "XDSprite.h"
 #include "main.h"
 
+#include <cmath>
+#define PI 3.14159
+
 typedef struct  
 {
 	Point leftup;

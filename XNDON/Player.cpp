@@ -2,13 +2,21 @@
 
 void Player :: drawSprite( Graphics& G )
 {
-	int width = 180;
-	int height = 240;
+	int width = 60;
+	int height = 80;
+
+	double angle = PI / 3.0;
+	int max_Y = 480 - height;
+	int max_Z = 640;
+
+	int proj_x = position.X;
+	int proj_y = max_Y - position.Z * cos(angle);
+
 	if(!flip){
-	G.DrawImage( pImage, position.X, position.Y, tilepos[curState][curPhase].leftup.X, tilepos[curState][curPhase].leftup.Y,
+	G.DrawImage( pImage, proj_x, proj_y, tilepos[curState][curPhase].leftup.X, tilepos[curState][curPhase].leftup.Y,
 		width, height, Gdiplus::UnitPixel);}
 	if(flip){
-	G.DrawImage( pImage, position.X, position.Y,360-tilepos[curState][curPhase].leftup.X, tilepos[curState][curPhase].leftup.Y,
+	G.DrawImage( pImage, proj_x, proj_y, 360/3-tilepos[curState][curPhase].leftup.X, tilepos[curState][curPhase].leftup.Y,
 		width, height, Gdiplus::UnitPixel);}
 	
 }
@@ -36,13 +44,13 @@ Player::Player( )
 	tilepos[MOV][1].leftup.X = 0;
 	tilepos[MOV][1].leftup.Y = 0;
 
-	tilepos[MOV][2].leftup.X = 180;
+	tilepos[MOV][2].leftup.X = 60;
 	tilepos[MOV][2].leftup.Y = 0;
 
 	tilepos[MOV][3].leftup.X = 0;
 	tilepos[MOV][3].leftup.Y = 0;
 
-	tilepos[MOV][4].leftup.X = 360;
+	tilepos[MOV][4].leftup.X = 120;
 	tilepos[MOV][4].leftup.Y = 0;
 
 	//

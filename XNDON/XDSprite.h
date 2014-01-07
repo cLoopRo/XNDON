@@ -58,8 +58,8 @@ public :
 
 	void moveLeft(int dt) {position.X -= velocity.X*dt;}
 	void moveRight(int dt) {position.X += velocity.X*dt;}
-	void moveUp(int dt) {position.Y -= velocity.Y*dt;}
-	void moveDown(int dt) {position.Y += velocity.Y*dt;}
+	void moveUp(int dt) {position.Z += velocity.Z*dt;}
+	void moveDown(int dt) {position.Z -= velocity.Z*dt;}
 	/* void move(int dt) {
 		position.X += velocity.X*dt;
 		position.Y += velocity.Y*dt;
