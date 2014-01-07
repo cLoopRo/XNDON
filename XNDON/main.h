@@ -1,5 +1,5 @@
 #pragma once
-//T.T
+
 #include <windows.h>
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus")
@@ -26,6 +26,7 @@ using std::wstring;
 
 #include <ctime>
 //#include <tchar.h>
+
 
 class Vector3{
 public:

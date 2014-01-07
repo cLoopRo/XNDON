@@ -24,9 +24,8 @@ void Render :: sceneUpdate(int dt){
 	for(list<XDSprite*>::iterator itr = missiles.begin(); itr != missiles.end(); itr++)
 		(*itr)->update(dt);
 
-
-
 	sceneUpdate();
+
 }
 
 Render::Render(void){	}
@@ -69,8 +68,7 @@ void Render :: sceneUpdate()
 	TCHAR szWidth[128];
 	SolidBrush B(Color(0,0,0));
 	swprintf(szWidth,TEXT("dTime:%u, 프레임 : %.2lf"), dTime, 1000.0/(dTime) );
-	memG->DrawString(szWidth,-1,&F, PointF(0,6),&B); 
-
+	memG->DrawString(szWidth,-1,&F, PointF(0,6),&B);
 
 	if (pCBit) {               //이전에 화면에 표시되는 비트맵 비우기
 		delete pCBit;

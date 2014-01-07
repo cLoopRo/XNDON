@@ -23,7 +23,10 @@ protected:
 		_width = _Width;
 		_height = _Height;
 	}
-	
+
+	void set_Image(int _N){	}
+
+//	virtual void draw( ) ;
 
 protected:
 	static XDObject* Create_Object(XDObject* _Object)

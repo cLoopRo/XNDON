@@ -9,7 +9,40 @@ class XDSprite : public XDObject
 
 	
 public :
-/*
+	
+	
+
+	
+	void updateAnimate(double dt)
+	{
+		dt_animation += dt;
+		if ( list_animation.size() != 0 )
+		{	
+			if ( dt_animation >= 0.25 ){
+				dt_animation -= 0.25;
+				set_Image( (*list_animation.begin()) ); 
+				list_animation.pop_front();
+			}					
+		}
+		else
+		{
+			if ( dt_animation >= 0.25 ){
+				dt_animation -= 0.25;
+				set_Image( basic_animation_num );
+				basic_animation_num = basic_animation_num/3;
+			}
+		}
+	}
+
+	void setAnimate(const list<int>& animation){
+		list_animation.insert( list_animation.end(), animation.begin(), animation.end() );
+	}
+
+	double dt_animation;
+	list<int> list_animation;
+	list<int> basic_animation;
+	int basic_animation_num;
+	/*
 	void draw(Graphics& G )
 	{
 		G.DrawImage( pImage, position.X - _width/2, position.Y - _height/2, 
@@ -101,6 +134,8 @@ protected:
 	//is_controll is 0 if it is already doing something
 	//else 1
 	int is_controll;
+
+	bool _is_Controlled;
 
 	bool direction;
 

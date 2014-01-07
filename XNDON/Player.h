@@ -6,6 +6,7 @@
 typedef struct  
 {
 	Point leftup;
+
 }TILEPOS;
 
 

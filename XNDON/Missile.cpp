@@ -7,9 +7,9 @@ void Missile :: drawSprite(Graphics& G){
 
 void Missile :: update(int dt)
 {
-	
+
 	position.X -= velocity.X * dt/7;
-	
+
 	position.Y += 10 * velocity.Y;
 	if(position.Y > 760 - pImage->GetHeight()) {
 		velocity.Y = -velocity.Y;
@@ -18,10 +18,11 @@ void Missile :: update(int dt)
 		velocity.Y = -velocity.Y;
 	}
 	if(position.X < -30) {
-		position.X = 1280; 
+		position.X = 1280;
 	}
 
 }
+
 Missile::Missile(void)
 	: XDSprite(L"./Fire.png")
 {
@@ -32,4 +33,6 @@ Missile::Missile(void)
 
 Missile::~Missile(void)
 {
+
+
 }

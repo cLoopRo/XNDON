@@ -1,19 +1,23 @@
+
 #include "main.h"
 #include "Render.h"
 #include "InputController.h"
 #include "ResManager.h"
-
+#include "XDDirector.h"
 #include <tchar.h>
 
 
 LRESULT CALLBACK WndProc(HWND,UINT,WPARAM,LPARAM); 
 HINSTANCE g_hInst; // 핸들 인스턴스 , H 로 시작하는 자료형은 다 핸들
 
+
 /*<--- 프로그램 윈도우 타이틀 정의 -->*/
 LPCTSTR lpszClass = TEXT("XNDON"); // TEXT("문자") => L"문자" => _T("문자");
 
 HWND hWndMain; // HWND : 윈도우 핸들을 담는 전용 타입, 유사) HANDLE : 범용핸들 타입
 // hWND 가 전역(static)일 시 제대로 작동 안함
+
+
 
 
 XDScene* Render :: pScene = NULL;
@@ -114,7 +118,9 @@ void OnPaint(HDC hdc)
 //void CALLBACK update(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
 void update(int dt)
 {
+	//HDC hdc = GetDC(XDDirector::get_hWndMain());
 	HDC hdc = GetDC(hWndMain);
+	
 	Graphics G(hdc);
 	using namespace Gdiplus;
 
@@ -155,6 +161,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 	 HANDLE hTimer;
      switch (iMessage) {
      case WM_CREATE:
+//		XDDirector::set_hWndMain( hWnd );
 		hWndMain = hWnd;
 		hdc = GetDC(hWnd);		 
 		// SetTimer() 으로 타이머 설치, KillTimer() 으로 타이머 해제
@@ -189,6 +196,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 			leftmousemove.push_back(lParam);
 		 return 0;
 	*/
+
 	case WM_TIMER:
 		hdc = GetDC(hWnd);		 
 
@@ -198,6 +206,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 		Render :: sceneUpdate( dt );
 		Render::draw(hdc);
 
+		return 0;
 	// 강제로 WM_PAINT 메시지를 발생시켜 주어야 할 때에는 InvalidateRect(hWnd,NULL,FALSE); 함수를 호출 
 	// BOOL InvlidateRect(HWND hWnd, CONST RECT *lpRect, BOOL bErase); 
 	// 이 함수는 윈도우의 작업 영역을 무효화시켜 윈도우즈로 하여금 WM_PAINT 메시지를 해당 윈도우로 보내도록 한다. 첫번째 인수 hWnd는 무효화의 대상이 되는 윈도우, 즉 다시 그려져야 할 윈도우의 핸들이다. 이 값은 WndProc이 호출될 때 전달되는 첫번째 인수 hWnd를 그대로 써 주면 된다.
@@ -205,7 +214,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 	// 세번째 인수 bErase는 무효화되기 전에 배경을 모두 지운 후 다시 그릴 것인지 아니면 배경을 지우지 않고 그릴 것인지를 지정한다. 이 값이 TRUE이면 배경을 지운 후 다시 그리고 FALSE이면 배경을 지우지 않은채로 다시 그린다. Key 예제의 경우 문자열이 계속 늘어만 나며 지워져야할 문자가 없기 때문에 이 인수를 FALSE로 지정하였지만 지워져야할 부분이 있다면 이 인수는 TRUE가 되어야 한다. 예제를 다음과 같이 변경해 보자.
 	case WM_PAINT:
 		hdc=BeginPaint(hWnd, &ps);
-        Render::draw(hdc);
+		Render::draw(hdc);
 		EndPaint(hWnd, &ps);
 		return 0;
     case WM_DESTROY:

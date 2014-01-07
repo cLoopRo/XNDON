@@ -16,6 +16,7 @@ XDSprite::XDSprite( ){
 }
 
 XDSprite :: XDSprite(wstring _Path){
+
 	pImage = new Image(_Path.c_str() ); //ResManager :: addImage( _Path );
 	position.X = 100;
 	position.Y = 0;
@@ -23,6 +24,7 @@ XDSprite :: XDSprite(wstring _Path){
 	velocity.X = 1;
 	velocity.Y = 1;
 	velocity.Z = 1;
+
 }
 
 XDSprite::~XDSprite(void)

@@ -3,9 +3,10 @@
 
 InputController::InputController(void)
 {
-}
 
+}
 
 InputController::~InputController(void)
 {
+
 }
