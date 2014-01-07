@@ -45,6 +45,9 @@
     <ClCompile Include="XDCube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="XDObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ResManager.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Coord3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XDObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

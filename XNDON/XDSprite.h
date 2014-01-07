@@ -1,23 +1,25 @@
 #pragma once
 #include "main.h"
 #include "ResManager.h"
+#include "XDObject.h"
 
-class XDSprite
+class XDSprite : public XDObject
 {
-public:
+
+
+	
+public :
+
+
+
+
+
+
+
 	virtual void drawSprite( Graphics& G );
 	virtual void update(int dt);
 	XDSprite( );
 	XDSprite(wstring _Path); 
-	XDSprite(int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
-	XDSprite(int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
-	XDSprite(int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
-	XDSprite(int _Controll, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
-
-	XDSprite(bool _Direction, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
-	XDSprite(bool _Direction, int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
-	XDSprite(bool _Direction, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
-	XDSprite(bool _Direction, int _Controll, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
 
 	bool getDirection( ) {return direction;}
 	void setDirection(bool _Direction) {direction = _Direction;}

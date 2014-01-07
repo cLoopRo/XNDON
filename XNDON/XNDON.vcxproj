@@ -82,6 +82,7 @@
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="ResManager.cpp" />
     <ClCompile Include="XDCube.cpp" />
+    <ClCompile Include="XDObject.cpp" />
     <ClCompile Include="XDScene.cpp" />
     <ClCompile Include="XDSprite.cpp" />
     <ClCompile Include="XDDirector.cpp" />
@@ -95,6 +96,7 @@
     <ClInclude Include="Render.h" />
     <ClInclude Include="ResManager.h" />
     <ClInclude Include="XDCube.h" />
+    <ClInclude Include="XDObject.h" />
     <ClInclude Include="XDScene.h" />
     <ClInclude Include="XDSprite.h" />
     <ClInclude Include="XDDirector.h" />
