@@ -58,7 +58,7 @@ protected:
 
 	void set_Image(int _N)
 	{
-		assert(_N < _pImages.size() );
+		assert(_N < _pImages.size() ); 
 		_pImage = _pImages[_N];	
 	}
 
