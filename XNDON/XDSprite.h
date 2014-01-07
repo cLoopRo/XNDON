@@ -7,8 +7,11 @@ class XDSprite
 public:
 	virtual void drawSprite( Graphics& G );
 	virtual void update(int dt);
-	XDSprite( );
+	XDSprite();
 	XDSprite(wstring _Path); 
+
+
+	/*
 	XDSprite(int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
 	XDSprite(int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
 	XDSprite(int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
@@ -18,6 +21,7 @@ public:
 	XDSprite(bool _Direction, int _Controll, int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity);
 	XDSprite(bool _Direction, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
 	XDSprite(bool _Direction, int _Controll, int _MaxHP, int _HP, int _PosX, int _PosY, int _PosZ, int _VelX, int _VelY, int _VelZ);
+	*/
 
 	bool getDirection( ) {return direction;}
 	void setDirection(bool _Direction) {direction = _Direction;}
@@ -80,6 +84,9 @@ public:
 
 
 protected:
+	static list<XDSprite> _sprites;
+
+
 	//is_controll is 0 if it is already doing something
 	//else 1
 	int is_controll;

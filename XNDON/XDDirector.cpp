@@ -1,8 +1,8 @@
 #include "XDDirector.h"
 
-
 XDDirector::XDDirector(void)
 {
+
 }
 
 

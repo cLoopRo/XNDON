@@ -29,9 +29,9 @@ using std::wstring;
 
 class Vector3{
 public:
-	Vector3( ){	};
+	Vector3( ){	}
 	Vector3(int _X, int _Y, int _Z) : X(_X), Y(_Y), Z(_Z)
-	{	}; 
+	{	}
 		
 	int X;
 	int Y;

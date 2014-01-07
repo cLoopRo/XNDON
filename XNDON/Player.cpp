@@ -80,7 +80,7 @@ void Player::update(int dt)
 {
 	if ( InputController::keys[37]  ) // left
 	{
-		if(XDSprite::direction == true){ pImage->RotateFlip(Gdiplus::Rotate180FlipY); flip=true;}
+		if(XDSprite::direction == true){ pImage->RotateFlip(Gdiplus::Rotate180FlipY); flip=true;	}
 		moveLeft(dt/5);
 		setState(MOV);
 		XDSprite::direction = false;

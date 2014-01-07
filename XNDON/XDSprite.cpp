@@ -25,7 +25,7 @@ XDSprite :: XDSprite(wstring _Path){
 	velocity.Z = 1;
 }
 
-
+/*
 XDSprite :: XDSprite(int _MaxHP, int _HP, const Vector3& _Position, const Vector3& _Velocity) {
 	direction = true;
 	is_controll = 1;
@@ -123,7 +123,7 @@ XDSprite :: XDSprite(bool _Direction, int _Controll, int _MaxHP, int _HP, int _P
 	position = Vector3(_PosX, _PosY, _PosZ);
 	velocity = Vector3(_VelZ, _VelY, _VelZ);
 }
-
+*/
 
 
 XDSprite::~XDSprite(void)
