@@ -129,8 +129,7 @@ void update(int dt)
 	SolidBrush B(Color(0,0,0));
 //	G.DrawString(Hangul,-1,&F,PointF(0,00),&B);
 //	G.MeasureString(Hangul,-1,&F,PointF(0,0),&bound);
-	swprintf(szWidth,TEXT("dwTime:%u, 프레임 : %.2lf"), dt, 1000.0/(dt) );
-	
+	_stprintf_s(szWidth,TEXT("dwTime:%u, 프레임 : %.2lf"), dt, 1000.0/(dt) ); // swprintf == _stprintf_s
 	
 	
 	

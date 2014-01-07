@@ -14,13 +14,8 @@ XDCube::XDCube(Coord3 _Init, Coord3 _End)
 }
 
 XDCube::XDCube(double _Init_x, double _Init_y, double _Init_z,
-	double _End_x, double _End_y, double _End_z) {
-	CubeInit.X = _Init_x;
-	CubeInit.Y = _Init_y;
-	CubeInit.Z = _Init_z;
-	CubeEnd.X = _End_x;
-	CubeEnd.Y = _End_y;
-	CubeEnd.Z = _End_z;
+	double _End_x, double _End_y, double _End_z)
+	: CubeInit(_Init_x, _Init_y, _Init_z), CubeEnd(_End_x, _End_y, _Init_z) {
 }
 
 bool CollisionCheck(const XDCube& _LC,const XDCube& _RC) {
