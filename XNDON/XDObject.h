@@ -1,5 +1,8 @@
 #pragma once
 #include "main.h"
+#include<iostream>
+#include<cassert>
+using std::vector;
 
 class XDObject
 {
@@ -9,7 +12,8 @@ protected:
 		map<wstring, Image*>::iterator itr;
 		if ( _images.end() == ( itr = _images.find(_Path) )  ) // 해당 image 가 존재하지 않으면
 		{
-			_pImage = new Image(_Path.c_str());
+			Image* tmpImage = new Image(_Path.c_str());
+			_pImages.push_back(tmpImage);
 			_images.insert ( std::pair<wstring, Image* >(_Path, _pImage) );
 		}
 		else
@@ -23,8 +27,6 @@ protected:
 		_width = _Width;
 		_height = _Height;
 	}
-
-	void set_Image(int _N){	}
 
 //	virtual void draw( ) ;
 
@@ -43,16 +45,36 @@ protected:
 	}
 
 protected:
+	/*
+	Image* set_Image (int _anum) {
+			int _deterX, _deterY;
+		int _vecmax = _pImages.size();
+		_deterX = (_anum % 10) - 1;
+		_deterY = (_anum / 10) - 1;
+		assert(_deterX + _deterY * 10 < _vecmax);
+		return _pImages[_deterX + _deterY * 10];	
+		
+	}
+	*/
+
+	void set_Image(int _N)
+	{
+		assert(_N < _pImages.size() ); 
+		_pImage = _pImages[_N];	
+	}
+
+protected:
+	vector< Image* > _pImages;
 	Image* _pImage;
 	int _width, _height;
 
 private:
+	
 	static list<XDObject*> _objects;
 	static map<wstring, Image* >  _images;
 
 protected:
-	XDObject( )
-	{	}
+	XDObject( ) {
+	}
 
 };
-

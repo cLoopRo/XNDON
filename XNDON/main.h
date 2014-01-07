@@ -43,7 +43,7 @@ static bool keys[256];	// Array Used For The Keyboard Routine
 
 
 int const CL_WIN_WIDTH_PIXEL = 960; 
-int const CL_WIN_HEIGHT_PIXEL = 640;
+int const CL_WIN_HEIGHT_PIXEL = 540;
 
 /*
 
