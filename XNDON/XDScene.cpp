@@ -2,9 +2,9 @@
 
 XDScene :: XDScene( )
 {
-	player = new Player( );
-	missile.push_back( new Missile() );
-	missile.push_back( new Missile() );
+	_player = new Player( );
+	_missile.push_back( new Missile() );
+	_missile.push_back( new Missile() );
 
 }
 

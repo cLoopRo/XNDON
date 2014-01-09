@@ -26,8 +26,8 @@ void Missile :: update(int dt)
 Missile::Missile(void)
 	: XDSprite(L"./Fire.png")
 {
-	position = Vector3(1280, 100, 480);
-	velocity = Vector3(1, 1, 0);
+	position = Vector3<int>(1280, 100, 480);
+	velocity = Vector3<int>(1, 1, 0);
 }
 
 

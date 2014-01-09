@@ -75,6 +75,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseMonster.cpp" />
+    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Missile.cpp" />
@@ -88,7 +90,9 @@
     <ClCompile Include="XDDirector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseMonster.h" />
     <ClInclude Include="Coord3.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="InputController.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Missile.h" />

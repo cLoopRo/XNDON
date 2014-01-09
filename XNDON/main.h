@@ -36,16 +36,16 @@ using std::wstring;
 #include <ctime>
 //#include <tchar.h>
 
-
+template<class T>
 class Vector3{
 public:
 	Vector3( ){	}
-	Vector3(int _X, int _Y, int _Z) : X(_X), Y(_Y), Z(_Z)
+	Vector3(T _X, T _Y, T _Z) : X(_X), Y(_Y), Z(_Z)
 	{	}
 		
-	int X;
-	int Y;
-	int Z;
+	T X;
+	T Y;
+	T Z;
 };
 
 static bool keys[256];	// Array Used For The Keyboard Routine
@@ -106,3 +106,4 @@ DWORD	unsigned long(int)Çü
 
 */
 
+	

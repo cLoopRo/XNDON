@@ -5,20 +5,25 @@
 
 class XDSprite : public XDObject
 {
-private :
+private:
+
 	bool isMoving; 	  
 	bool isJumping;
 	bool isSkilling;
 	bool isBeingAttackted;
-	
-protected :
+
+	double attackSpeed;
+	double moveSpeed;
+	double recoverySpeed;
+
+
+protected:
 	/*<----- 애니메이션 구현 ----->*/
 	void setUpdate(double _DTIME)
 	{
 		dt_animation += _DTIME;
-		if ( dt_animation = 0.25 )
+		if ( dt_animation >= 0.25 )
 		{
-		
 		
 		}
 	}
@@ -56,6 +61,27 @@ private:
 
 	/*<---------------- 애니메이션 구현 종료 ------->*/	
 	
+
+
+	/*<----- 위치와 충돌 관련 구현 ----->*/
+	// 화면상의 격자 위치는 왼쪽 가장 윗부분을 0,0 으로 한다.
+	
+
+private:
+	Vector3<int> _gridPos;
+	Vector3<double> _realPos;
+	Vector3<double> _velocity;
+
+	void Update_Move(double _DTime ){
+		// 위치가 같으면 
+		if ( (double) _gridPos.X == _realPos.X && (double) _gridPos.Y == _realPos.Y )
+			return ;
+		// 위치가 다르면 
+
+	}
+
+
+
 public:
 
 	virtual void drawSprite( Graphics& G );
@@ -107,20 +133,20 @@ public:
 	void setVelocityX(int _X) {velocity.X = _X;}
 	void setVelocityY(int _Y) {velocity.Y = _Y;}
 	void setVelocityZ(int _Z) {velocity.Z = _Z;}
-	const Vector3& getPosition( ) {return position;}
-	const Vector3& getVelocity( ) {return velocity;}
-	void setPosition(const Vector3& _Position) {
+	const Vector3<int>& getPosition( ) {return position;}
+	const Vector3<int>& getVelocity( ) {return velocity;}
+	void setPosition(const Vector3<int>& _Position) {
 		position.X = _Position.X;
 		position.Y = _Position.Y;
 		position.Z = _Position.Z;
 	}
-	void setVelocity(const Vector3& _Velocity) {
+	void setVelocity(const Vector3<int>& _Velocity) {
 		velocity.X = _Velocity.X;
 		velocity.Y = _Velocity.Y;
 		velocity.Z = _Velocity.Z;
 	}
-	void setPosition(int _X, int _Y, int _Z) {position = Vector3(_X, _Y, _Z);}
-	void setVelocity(int _X, int _Y, int _Z) {velocity = Vector3(_X, _Y, _Z);}
+	void setPosition(int _X, int _Y, int _Z) {position = Vector3<int>(_X, _Y, _Z);}
+	void setVelocity(int _X, int _Y, int _Z) {velocity = Vector3<int>(_X, _Y, _Z);}
 
 
 protected:
@@ -140,8 +166,9 @@ protected:
 	int state;
 
 	Image* pImage;  //이미지포인터
-	Vector3 position; // Make Getter Setter
-	Vector3 velocity; // Make Getter Setter
+	Vector3<int> position; // Make Getter Setter
+	Vector3<int> velocity; // Make Getter Setter
+
 
 
 

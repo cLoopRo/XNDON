@@ -11,8 +11,8 @@ XDSprite::XDSprite( ){
 	max_hp = 1;
 	hp = 1;
 	state = 0; //??
-	position = Vector3(0,0,0);
-	velocity = Vector3(10,10,10);
+	position = Vector3<int>(0,0,0);
+	velocity = Vector3<int>(10,10,10);
 }
 
 XDSprite :: XDSprite(wstring _Path){
