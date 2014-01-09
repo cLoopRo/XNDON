@@ -1,5 +1,12 @@
 #pragma once
 
+// Direct2D Header
+#include <d2d1.h>
+
+// 가변인자를 사용하기 위한 헤더
+#include <cstdarg>
+
+
 #include <windows.h>
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus")
@@ -20,7 +27,9 @@ using std::vector;
 using std::list;
 using std::map;
 using std::queue;
+using std::deque;
 
+#include <tchar.h>
 #include <string>
 using std::wstring;
 
@@ -44,6 +53,9 @@ static bool keys[256];	// Array Used For The Keyboard Routine
 
 int const CL_WIN_WIDTH_PIXEL = 960; 
 int const CL_WIN_HEIGHT_PIXEL = 540;
+
+int const ANIMATION_FRAME = 4;
+double const ANIMATION_PERIOD = 1.0/ANIMATION_FRAME;
 
 /*
 

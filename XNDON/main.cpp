@@ -166,7 +166,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT iMessage,WPARAM wParam,LPARAM lParam)
 		hdc = GetDC(hWnd);		 
 		// SetTimer() 으로 타이머 설치, KillTimer() 으로 타이머 해제
 		// 우선순위가 낮으므로 정확도를 위해서는 타이머 콜백 함수 사용 => 네번째 인자에 콜백함수 포함
-		hTimer= (HANDLE) SetTimer( hWnd, 1, 30, NULL );
+		hTimer= (HANDLE) SetTimer( hWnd, 1, 100, NULL );
       	return 0;
 
 	 case WM_KEYUP:
